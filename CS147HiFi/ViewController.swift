@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  CS147HiFi
 //
-//  Created by clmeiste on 11/21/17.
+//  Created by timaiken on 11/21/17.
 //  Copyright © 2017 StanfordX. All rights reserved.
 //
 
@@ -15,6 +15,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var manager:ARObjectManager?
     
+    let arTap:UITapGestureRecognizer = UITapGestureRecognizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,12 +27,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = false
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
+        let scene = SCNScene()
         sceneView.scene = scene
         
         self.manager = ARObjectManager(sceneView: sceneView)
+        arTap.addTarget(self.manager!, action: #selector(self.onTapGesture))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,5 +81,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    // MARK: - Gesture Recognizers
+    
+    @objc func onTapGesture(tapGesture: UITapGestureRecognizer) {
+        let tapLocation:CGPoint = tapGesture.location(in: self.sceneView)
+        
+        let options = [SCNHitTestOption.backFaceCulling: false]
+        let hitResults = self.sceneView.hitTest(tapLocation, options: options)
+        
+        if(hitResults.count > 0) {
+            let result = hitResults[0]
+            if let m = manager {
+                if photo = m.getPhotoForNode(node: result.node) {
+                    
+                }
+            }
+        }
     }
 }
