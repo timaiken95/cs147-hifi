@@ -312,10 +312,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="94.902548725637189"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="eg0-C9-NBV">
             <objects>
-                <viewController id="bro-0c-PUu" sceneMemberID="viewController">
+                <viewController id="bro-0c-PUu" customClass="MapViewController" customModule="CS147HiFi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="LMe-kR-mHN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,6 +333,9 @@
                                         <integer key="value" value="45"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -342,6 +345,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dAA-np-jfP"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="1hm-7C-kDK" id="Jef-bQ-k4V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEb-lJ-TpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
