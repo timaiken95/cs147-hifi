@@ -104,7 +104,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingSessionConfiguration()
+//        let configuration = ARWorldTrackingSessionConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
         
         // Run the view's session
