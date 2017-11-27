@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11A36C051FC8A80700C51692 /* ARTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A36C041FC8A80700C51692 /* ARTour.swift */; };
+		11A36C071FC8A9A600C51692 /* ARTourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A36C061FC8A9A600C51692 /* ARTourManager.swift */; };
 		11C1C8C11FC48D5300F598D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8C01FC48D5300F598D8 /* AppDelegate.swift */; };
 		11C1C8C31FC48D5300F598D8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C1C8C21FC48D5300F598D8 /* art.scnassets */; };
 		11C1C8C51FC48D5300F598D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8C41FC48D5300F598D8 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11A36C041FC8A80700C51692 /* ARTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTour.swift; sourceTree = "<group>"; };
+		11A36C061FC8A9A600C51692 /* ARTourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTourManager.swift; sourceTree = "<group>"; };
 		11C1C8BD1FC48D5300F598D8 /* CS147HiFi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS147HiFi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C1C8C01FC48D5300F598D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C1C8C21FC48D5300F598D8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -115,7 +119,9 @@
 				11C1C9151FC8882300F598D8 /* PopoverViewController.swift */,
 				11C1C8F61FC5F7DA00F598D8 /* Data.swift */,
 				11C1C8F01FC4C65800F598D8 /* ARObjectManager.swift */,
+				11A36C061FC8A9A600C51692 /* ARTourManager.swift */,
 				11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */,
+				11A36C041FC8A80700C51692 /* ARTour.swift */,
 				11C1C8F21FC4CE4200F598D8 /* SCNVector3Extensions.swift */,
 				11C1C8C61FC48D5300F598D8 /* Main.storyboard */,
 				11C1C8C91FC48D5300F598D8 /* Assets.xcassets */,
@@ -277,8 +283,10 @@
 			files = (
 				11C1C8F11FC4C65800F598D8 /* ARObjectManager.swift in Sources */,
 				11C1C8F71FC5F7DA00F598D8 /* Data.swift in Sources */,
+				11A36C071FC8A9A600C51692 /* ARTourManager.swift in Sources */,
 				11C1C9161FC8882300F598D8 /* PopoverViewController.swift in Sources */,
 				11C1C8F51FC5D14D00F598D8 /* ARPhoto.swift in Sources */,
+				11A36C051FC8A80700C51692 /* ARTour.swift in Sources */,
 				11C1C8C51FC48D5300F598D8 /* ViewController.swift in Sources */,
 				11C1C8C11FC48D5300F598D8 /* AppDelegate.swift in Sources */,
 				11C1C8F31FC4CE4200F598D8 /* SCNVector3Extensions.swift in Sources */,

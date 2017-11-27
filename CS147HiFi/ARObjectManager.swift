@@ -12,73 +12,19 @@ import UIKit
 import ARKit
 import MapKit
 
-class ARObjectManager: NSObject, CLLocationManagerDelegate {
+class ARObjectManager {
     
     let arScene:ARSCNView
     let locationManager:CLLocationManager
     
-    var initialARLocation:SCNVector3
-    var initialARHeading:Float
+    var arPhotos:[Int:ARPhoto]
     
-    var initialCLLocation:CLLocation
-    var initialCLHeading:CLHeading
-    
-    var arPhotos:[ARPhoto]
-    
-    init(sceneView: ARSCNView) {
+    init(sceneView: ARSCNView, lMan:CLLocationManager) {
         
         self.arScene = sceneView
+        self.locationManager = lMan
         
-        self.locationManager = CLLocationManager()
-        
-        self.initialARLocation = SCNVector3Zero
-        self.initialARHeading = 0
-        self.initialCLHeading = CLHeading()
-        self.initialCLLocation = CLLocation()
-        
-        self.arPhotos = []
-        
-        super.init()
-        
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = 20 // meters
-        self.locationManager.startUpdatingLocation()
-        self.locationManager.startUpdatingHeading()
-        
-        self.initialCLLocation = locationManager.location!
-        self.initialCLHeading = locationManager.heading!
-        self.initialARLocation = getARLocation()
-        self.initialARHeading = self.arScene.session.currentFrame!.camera.eulerAngles.y
-        
-        
-    }
-    
-    // callback for updating heading from the location manager
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        let clRotation:Float = Float(newHeading.trueHeading - initialCLHeading.trueHeading)
-        let arRotation:Float = self.arScene.session.currentFrame!.camera.eulerAngles.y - self.initialARHeading
-        
-        let rotationOff = abs(clRotation - arRotation)
-        
-        print("Heading off \(rotationOff)")
-        
-        
-    }
-    
-    // callback for updating location from the location manager
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let clDistance:Float = Float(locations.last!.distance(from: initialCLLocation))
-        
-        let mat:SCNMatrix4 = SCNMatrix4(self.arScene.session.currentFrame!.camera.transform)
-        let arCurrPosition:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43)
-        
-        let arDistance:Float = SCNVector3Distance(vectorStart: self.initialARLocation, vectorEnd: arCurrPosition)
-        
-        let distanceOff = abs(clDistance - arDistance)
-        
-        print("Distance off \(distanceOff)")
-        
+        self.arPhotos = [:]
     }
     
     // https://stackoverflow.com/questions/45185555/swift-scenekit-get-direction-of-camera
@@ -97,21 +43,53 @@ class ARObjectManager: NSObject, CLLocationManagerDelegate {
                                        ts: tours,
                                        s: scale)
         
+        self.arScene.scene.rootNode.addChildNode(newPhoto.geometryNode)
+        
         newPhoto.updatePosition(currLocCLL: locationManager.location!, currLocAR: getARLocation())
-        self.arPhotos.append(newPhoto)
+        self.arPhotos[photoId] = newPhoto
         
         // https://stackoverflow.com/questions/21861403/latitude-and-longitude-points-from-mkpolyline
         
     }
     
     func getPhotoForNode(node:SCNNode) -> ARPhoto? {
-        for photo in arPhotos {
-            if(photo.geometryNode == result.node) {
-                return photo
+        for pID in arPhotos.keys {
+            if(arPhotos[pID]!.geometryNode == node) {
+                return arPhotos[pID]!
             }
         }
         
         return nil
     }
     
+    func setAllVisible() {
+        for pID in arPhotos.keys {
+            arPhotos[pID]!.visible = true
+        }
+    }
+    
+    func setPhotoVisible(pID:Int) {
+        arPhotos[pID]!.visible = true
+    }
+    
+     // https://developer.apple.com/documentation/arkit/arconfiguration.worldalignment/2873776-gravityandheading
+    class func getARPosition(currLocCLL:CLLocation, currLocAR:SCNVector3, objectLocCLL:CLLocation) -> SCNVector3 {
+        
+        let distance:Double = objectLocCLL.distance(from: currLocCLL)
+        var photoHeadingZ:Double =  -objectLocCLL.coordinate.latitude + currLocCLL.coordinate.latitude
+        var photoHeadingX:Double = objectLocCLL.coordinate.longitude - currLocCLL.coordinate.longitude
+        
+        let magnitude:Double = sqrt(pow(photoHeadingZ, 2.0) + pow(photoHeadingX, 2.0))
+        photoHeadingZ *= distance / magnitude
+        photoHeadingX *= distance / magnitude
+        
+        let position:SCNVector3 = SCNVector3Make(currLocAR.x + Float(photoHeadingX),
+                                                 0,
+                                                 currLocAR.z + Float(photoHeadingZ))
+        
+        return position
+    }
+    
 }
+
+

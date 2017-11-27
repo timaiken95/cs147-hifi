@@ -19,7 +19,20 @@ class ARPhoto {
     let tours: [Int]
     let scale:Float
     let geometryNode:SCNNode
-    var visible:Bool
+    
+    var visible:Bool {
+        set {
+            if newValue == true {
+                self.geometryNode.isHidden = false
+            } else {
+                self.geometryNode.isHidden = true
+            }
+        }
+        
+        get {
+            return self.visible
+        }
+    }
     
     init(pID:Int, filename:String, t: String, d: String, lat: Float, long: Float, ts:[Int], s:Float) {
         self.photoID = pID
@@ -28,9 +41,11 @@ class ARPhoto {
         self.description = d
         self.location = CLLocation(latitude: Double(lat), longitude: Double(long))
         self.tours = ts
-        self.visible = false
         self.geometryNode = SCNNode()
         self.scale = s
+        
+        // set this last
+        self.visible = true
         
         createGeometry()
     }
@@ -45,25 +60,17 @@ class ARPhoto {
         plane.firstMaterial!.diffuse.contents = self.imageFile
         
         self.geometryNode.geometry = plane
-        self.geometryNode.constraints = [SCNBillboardConstraint()]
+        
+        let billboard = SCNBillboardConstraint()
+        billboard.freeAxes = SCNBillboardAxis.Y
+        
+        self.geometryNode.constraints = [billboard]
+        
     }
     
-    // https://developer.apple.com/documentation/arkit/arconfiguration.worldalignment/2873776-gravityandheading
     func updatePosition(currLocCLL:CLLocation, currLocAR:SCNVector3) {
-        
-        let distance:Double = location.distance(from: currLocCLL)
-        var photoHeadingZ:Double =  self.location.coordinate.latitude - currLocCLL.coordinate.latitude
-        var photoHeadingX:Double = self.location.coordinate.longitude - currLocCLL.coordinate.longitude
-        
-        let magnitude:Double = sqrt(pow(photoHeadingZ, 2.0) + pow(photoHeadingX, 2.0))
-        photoHeadingZ *= distance / magnitude
-        photoHeadingX *= distance / magnitude
-        
-        let position:SCNVector3 = SCNVector3Make(currLocAR.x + Float(photoHeadingX),
-                                                 0,
-                                                 currLocAR.z + Float(photoHeadingZ))
-        self.geometryNode.position = position
-        
+        let loc = ARObjectManager.getARPosition(currLocCLL: currLocCLL, currLocAR: currLocAR, objectLocCLL: self.location)
+        self.geometryNode.position = loc
     }
     
 }
