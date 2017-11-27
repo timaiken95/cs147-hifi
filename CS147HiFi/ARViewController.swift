@@ -25,6 +25,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var initializingARView: UIView!
     @IBOutlet weak var startScreenView: UIVisualEffectView!
     
+    @IBOutlet weak var showMapButtonView: UIVisualEffectView!
+    
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
     var locationManager:CLLocationManager?
@@ -40,8 +42,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         didSet {
             if self.showPhotoInfo == true {
                 self.photoInfoView.isHidden = false
+                self.showMapButtonView.isHidden = true
             } else {
                 self.photoInfoView.isHidden = true
+                self.showMapButtonView.isHidden = false
             }
         }
     }
@@ -52,9 +56,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 self.showPhotoInfo = false
                 self.tourSelectionButtonView.isHidden = true
                 self.tourWindowView.isHidden = false
+                self.showMapButtonView.isHidden = true
             } else {
                 self.tourSelectionButtonView.isHidden = false
                 self.tourWindowView.isHidden = true
+                self.showMapButtonView.isHidden = false
             }
         }
     }
@@ -93,6 +99,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.showPhotoInfo = false
         self.showTourSelections = false
         self.startExploringButtonView.isHidden = true
+        self.showMapButtonView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -219,6 +226,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBAction func startExploringClicked(_ sender: Any) {
         self.startScreenView.isHidden = true
+        self.showMapButtonView.isHidden = false
     }
     
     // MARK: - Location Callback
