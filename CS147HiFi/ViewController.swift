@@ -108,7 +108,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         configuration.worldAlignment = .gravityAndHeading
         
         // Run the view's session
-        sceneView.session.run(configuration)
+        sceneView.session.run(configuration,
+                              options: [ARSession.RunOptions.resetTracking, ARSession.RunOptions.removeExistingAnchors])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
