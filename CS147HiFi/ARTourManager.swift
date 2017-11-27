@@ -50,15 +50,11 @@ class ARTourManager: NSObject {
     }
     
     
-    func addARTour(tourID:Int, title:String, description:String, slat:Float, slong:Float, elat:Float, elong:Float, photos:[Int], time:TimeInterval) {
+    func addARTour(tourID:Int, title:String, description:String, photos:[Int], time:TimeInterval) {
         
         let newTour:ARTour = ARTour(tID: tourID,
                                     t: title,
                                     d: description,
-                                    startlat: slat,
-                                    startlong: slong,
-                                    endlat: elat,
-                                    endlong: elong,
                                     ps: photos,
                                     time: time)
         
