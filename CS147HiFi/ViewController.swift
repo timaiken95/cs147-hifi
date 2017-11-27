@@ -133,13 +133,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
                 self.initialARLocation = SCNVector3(mat.m41, mat.m42, mat.m43)
                 
+                
+                
                 self.objectManager = ARObjectManager(sceneView: self.sceneView, lMan: self.locationManager!)
                 self.tourManager = ARTourManager(sceneView: self.sceneView,
                                                  objectManager: self.objectManager!,
                                                  lMan: self.locationManager!)
-                self.objectManager!.addARItem(photoId: 0, file: "slide13.png", title: "Wine", description: "wine :)", lat: 37.447126, long: -122.18545, tours: [0], scale: 1)
                 
-                self.tourManager!.addARTour(tourID: 0, title: "blah", description: "blah", slat: 0, slong: 0, elat: 0, elong: 0, photos: [0], time: 10)
+                AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
                 
                 self.tourManager!.startTour(tourID: 0)
                 

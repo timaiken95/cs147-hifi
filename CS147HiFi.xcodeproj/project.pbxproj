@@ -21,7 +21,6 @@
 		11C1C8F31FC4CE4200F598D8 /* SCNVector3Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8F21FC4CE4200F598D8 /* SCNVector3Extensions.swift */; };
 		11C1C8F51FC5D14D00F598D8 /* ARPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */; };
 		11C1C8F71FC5F7DA00F598D8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8F61FC5F7DA00F598D8 /* Data.swift */; };
-		11C1C9161FC8882300F598D8 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C9151FC8882300F598D8 /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		11C1C8F21FC4CE4200F598D8 /* SCNVector3Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNVector3Extensions.swift; sourceTree = "<group>"; };
 		11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPhoto.swift; sourceTree = "<group>"; };
 		11C1C8F61FC5F7DA00F598D8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		11C1C9151FC8882300F598D8 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,6 @@
 				11C1C8C01FC48D5300F598D8 /* AppDelegate.swift */,
 				11C1C8C21FC48D5300F598D8 /* art.scnassets */,
 				11C1C8C41FC48D5300F598D8 /* ViewController.swift */,
-				11C1C9151FC8882300F598D8 /* PopoverViewController.swift */,
 				11C1C8F61FC5F7DA00F598D8 /* Data.swift */,
 				11C1C8F01FC4C65800F598D8 /* ARObjectManager.swift */,
 				11A36C061FC8A9A600C51692 /* ARTourManager.swift */,
@@ -284,7 +281,6 @@
 				11C1C8F11FC4C65800F598D8 /* ARObjectManager.swift in Sources */,
 				11C1C8F71FC5F7DA00F598D8 /* Data.swift in Sources */,
 				11A36C071FC8A9A600C51692 /* ARTourManager.swift in Sources */,
-				11C1C9161FC8882300F598D8 /* PopoverViewController.swift in Sources */,
 				11C1C8F51FC5D14D00F598D8 /* ARPhoto.swift in Sources */,
 				11A36C051FC8A80700C51692 /* ARTour.swift in Sources */,
 				11C1C8C51FC48D5300F598D8 /* ViewController.swift in Sources */,

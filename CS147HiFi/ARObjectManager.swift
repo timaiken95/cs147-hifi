@@ -48,8 +48,6 @@ class ARObjectManager {
         newPhoto.updatePosition(currLocCLL: locationManager.location!, currLocAR: getARLocation())
         self.arPhotos[photoId] = newPhoto
         
-        // https://stackoverflow.com/questions/21861403/latitude-and-longitude-points-from-mkpolyline
-        
     }
     
     func getPhotoForNode(node:SCNNode) -> ARPhoto? {
