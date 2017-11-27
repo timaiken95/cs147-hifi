@@ -14,14 +14,18 @@ import CoreLocation
 class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    @IBOutlet weak var blurBackgroundView: UIVisualEffectView!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var titleView: UITextView!
+    @IBOutlet weak var photoInfoView: UIVisualEffectView!
+    @IBOutlet weak var photoDescriptionBox: UITextView!
+    @IBOutlet weak var photoTitleBox: UITextView!
     
+    @IBOutlet weak var tourSelectionButtonView: UIVisualEffectView!
+    @IBOutlet weak var tourWindowView: UIVisualEffectView!
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
     var locationManager:CLLocationManager?
     
+    @IBAction func closeTourWindow(_ sender: Any) {
+    }
     var session:ARSession?
     
     var initialARLocation:SCNVector3?
@@ -29,12 +33,25 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     var initialized:Bool = false
     
-    var showOverlay:Bool = false {
+    var showPhotoInfo:Bool = false {
         didSet {
-            if self.showOverlay == true {
-                self.blurBackgroundView.isHidden = false
+            if self.showPhotoInfo == true {
+                self.photoInfoView.isHidden = false
             } else {
-                self.blurBackgroundView.isHidden = true
+                self.photoInfoView.isHidden = true
+            }
+        }
+    }
+    
+    var showTourSelections:Bool = false {
+        didSet {
+            if self.showTourSelections == true {
+                self.showPhotoInfo = false
+                self.tourSelectionButtonView.isHidden = true
+                self.tourWindowView.isHidden = false
+            } else {
+                self.tourSelectionButtonView.isHidden = false
+                self.tourWindowView.isHidden = true
             }
         }
     }
@@ -70,7 +87,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.initialCLLocation = nil
         self.initialARLocation = nil
         
-        self.showOverlay = false
+        self.showPhotoInfo = false
+        self.showTourSelections = false
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -155,8 +173,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @objc func onTapGesture(tapGesture: UITapGestureRecognizer) {
         
-        if self.showOverlay {
-            self.showOverlay = false
+        if self.showPhotoInfo || self.showTourSelections {
             return
         }
         
@@ -169,12 +186,24 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             let result = hitResults[0]
             if let m = objectManager {
                 if let photo = m.getPhotoForNode(node: result.node) {
-                    self.titleView.text = photo.title
-                    self.textView.text = photo.description
-                    self.showOverlay = true
+                    self.photoTitleBox.text = photo.title
+                    self.photoDescriptionBox.text = photo.description
+                    self.showPhotoInfo = true
                 }
             }
         }
+    }
+    
+    @IBAction func tourSelectionButton(_ sender: Any) {
+        self.showTourSelections = true
+    }
+    
+    @IBAction func closeTourInfoWindow(_ sender: Any) {
+        self.showTourSelections = false
+    }
+    
+    @IBAction func closePhotoInfoWindow(_ sender: Any) {
+        self.showPhotoInfo = false
     }
     
     // callback for updating location from the location manager
