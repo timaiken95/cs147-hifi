@@ -324,24 +324,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
-                                <rect key="frame" x="30" y="546" width="90" height="90"/>
-                                <color key="backgroundColor" red="0.49848202720207258" green="0.46921211455109235" blue="0.49662280231548128" alpha="0.51419454225352113" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-rY-t0G">
+                                <rect key="frame" x="40" y="527" width="100" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
+                                        <rect key="frame" x="15" y="15" width="70" height="70"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="15" id="3Q7-SN-xR9"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="KU4-rY-t0G" secondAttribute="leading" constant="15" id="9Q0-2p-qnT"/>
+                                    <constraint firstAttribute="width" constant="100" id="Eum-td-ddU"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="top" secondItem="KU4-rY-t0G" secondAttribute="top" constant="15" id="Net-d6-0Rc"/>
+                                    <constraint firstAttribute="trailing" secondItem="KaJ-Qh-nnL" secondAttribute="trailing" constant="15" id="U19-Vq-SvR"/>
+                                    <constraint firstAttribute="height" constant="100" id="b90-zG-Yvz"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="45"/>
+                                        <integer key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="dAA-np-jfP" secondAttribute="leading" constant="30" id="pGt-fK-LFu"/>
-                            <constraint firstItem="dAA-np-jfP" firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="30" id="rWU-kT-qbb"/>
+                            <constraint firstItem="dAA-np-jfP" firstAttribute="bottom" secondItem="KU4-rY-t0G" secondAttribute="bottom" constant="40" id="Aa5-ex-ZJV"/>
+                            <constraint firstItem="KU4-rY-t0G" firstAttribute="leading" secondItem="dAA-np-jfP" secondAttribute="leading" constant="40" id="uj9-3c-M9P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dAA-np-jfP"/>
                     </view>
