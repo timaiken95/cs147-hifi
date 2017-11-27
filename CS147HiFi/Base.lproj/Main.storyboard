@@ -175,28 +175,98 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhu-Dz-7RW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r7I-fS-BA4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StanX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agF-9O-J8X">
+                                            <rect key="frame" x="0.0" y="78" width="375" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="76"/>
+                                            <color key="textColor" red="1" green="0.06950727541403523" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="highlightedColor" red="1" green="0.019891490399700618" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-9R-BCy">
+                                            <rect key="frame" x="67" y="446" width="240" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhF-bu-N4z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <state key="normal" title="Start Exloring">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="startExploringClicked:" destination="BV1-FR-VrT" eventType="touchDown" id="WNx-fc-hIP"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rca-K3-cJL">
+                                            <rect key="frame" x="8" y="214" width="358" height="224"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initializing AR Experience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uL-gC-mAp">
+                                                    <rect key="frame" x="8" y="8" width="350" height="140"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lmZ-hY-qps">
+                                                    <rect key="frame" x="169" y="102" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pYK-EZ-V7t" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" constant="40" id="14Z-yQ-csV"/>
                             <constraint firstItem="pYK-EZ-V7t" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="40" id="BnF-2u-a15"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="bottom" secondItem="dNc-Fz-lno" secondAttribute="bottom" constant="25" id="E4S-Kf-qyL"/>
+                            <constraint firstItem="dhu-Dz-7RW" firstAttribute="bottom" secondItem="Odq-Nz-7rp" secondAttribute="bottom" id="HzX-j3-ZQV"/>
+                            <constraint firstItem="dhu-Dz-7RW" firstAttribute="trailing" secondItem="Odq-Nz-7rp" secondAttribute="trailing" id="J9u-bU-l3b"/>
                             <constraint firstItem="dNc-Fz-lno" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="25" id="Oa3-uy-mhN"/>
                             <constraint firstItem="dNc-Fz-lno" firstAttribute="top" secondItem="Odq-Nz-7rp" secondAttribute="top" constant="25" id="Val-rH-HBV"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="dNc-Fz-lno" secondAttribute="trailing" constant="25" id="XhM-ey-tvN"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="xyF-y4-XgD" secondAttribute="trailing" constant="25" id="dFe-wd-IAm"/>
                             <constraint firstItem="xyF-y4-XgD" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="25" id="heU-8l-Zag"/>
+                            <constraint firstItem="dhu-Dz-7RW" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" id="mBB-Go-yfF"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="bottom" secondItem="xyF-y4-XgD" secondAttribute="bottom" constant="50" id="n4O-fi-Waq"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="pYK-EZ-V7t" secondAttribute="trailing" constant="40" id="oV8-hn-NFj"/>
                             <constraint firstItem="xyF-y4-XgD" firstAttribute="top" secondItem="pYK-EZ-V7t" secondAttribute="bottom" constant="5" id="r80-9h-5No"/>
+                            <constraint firstItem="dhu-Dz-7RW" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" id="xUu-k9-TgT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Odq-Nz-7rp"/>
                     </view>
                     <connections>
+                        <outlet property="initializingARView" destination="Rca-K3-cJL" id="u2t-hG-hao"/>
                         <outlet property="photoDescriptionBox" destination="nfx-kb-W53" id="nYS-G5-apD"/>
                         <outlet property="photoInfoView" destination="xyF-y4-XgD" id="iAB-ef-C5g"/>
                         <outlet property="photoTitleBox" destination="u4I-iD-IdX" id="NGA-B7-bQC"/>
                         <outlet property="sceneView" destination="1tp-TB-C9j" id="oTh-NX-gWV"/>
+                        <outlet property="startExploringButtonView" destination="eO8-9R-BCy" id="CT9-mh-N5u"/>
+                        <outlet property="startScreenView" destination="dhu-Dz-7RW" id="ORp-M4-ZeI"/>
                         <outlet property="tourSelectionButtonView" destination="pYK-EZ-V7t" id="1Yo-Ri-ydr"/>
                         <outlet property="tourWindowView" destination="dNc-Fz-lno" id="9dL-S8-dwf"/>
                     </connections>

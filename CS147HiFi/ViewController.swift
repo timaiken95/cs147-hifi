@@ -20,12 +20,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var tourSelectionButtonView: UIVisualEffectView!
     @IBOutlet weak var tourWindowView: UIVisualEffectView!
+    
+    @IBOutlet weak var startExploringButtonView: UIView!
+    @IBOutlet weak var initializingARView: UIView!
+    @IBOutlet weak var startScreenView: UIVisualEffectView!
+    
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
     var locationManager:CLLocationManager?
     
-    @IBAction func closeTourWindow(_ sender: Any) {
-    }
     var session:ARSession?
     
     var initialARLocation:SCNVector3?
@@ -89,6 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         self.showPhotoInfo = false
         self.showTourSelections = false
+        self.startExploringButtonView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -125,6 +129,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         switch camera.trackingState {
         case ARCamera.TrackingState.normal:
             if self.initialized == false {
+                
                 let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
                 self.initialARLocation = SCNVector3(mat.m41, mat.m42, mat.m43)
                 
@@ -138,9 +143,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 
                 self.tourManager!.startTour(tourID: 0)
                 
+                self.initializingARView.isHidden = true
+                self.startExploringButtonView.isHidden = false
+                
                 self.initialized = true
                 return
             }
+            
         default:
             return
         }
@@ -204,6 +213,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBAction func closePhotoInfoWindow(_ sender: Any) {
         self.showPhotoInfo = false
+    }
+    
+    @IBAction func startExploringClicked(_ sender: Any) {
+        self.startScreenView.isHidden = true
     }
     
     // callback for updating location from the location manager
