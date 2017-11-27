@@ -221,6 +221,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.startScreenView.isHidden = true
     }
     
+    // MARK: - Location Callback
+    
     // callback for updating location from the location manager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
