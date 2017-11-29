@@ -13,19 +13,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var tours:[ARTour] = []
     var photos:[ARPhoto] = []
-
+    var tours:[ARTour] = []
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         do {
-            if let file = Bundle.main.url(forResource: "ar_contents", withExtension: "json") {
+            if let file = Bundle.main.url(forResource: "AppContent", withExtension: "json") {
                 let data = try Data(contentsOf: file)
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 if let object = json as? [String: Any] {
                     // json is a dictionary
-                    print(object)
+                    
+                    if let photoDicts = object["photos"] as? [[String:Any]] {
+                        for dict in photoDicts {
+                            let id = dict["photoId"] as! Int
+                            let file = dict["file"] as! String
+                            let title = dict["title"] as! String
+                            let description = dict["description"] as! String
+                            let lat = dict["lat"] as! Float
+                            let long = dict["long"] as! Float
+                            let tours = dict["tours"] as! [Int]
+                            
+                            let photoEntry = ARPhoto(pID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours, s: 1)
+                            photos.append(photoEntry)
+                        }
+                    }
+                    
+                    if let tourDicts = object["tours"] as? [[String:Any]] {
+                        for dict in tourDicts {
+                            let id = dict["tourId"] as! Int
+                            let title = dict["title"] as! String
+                            let description = dict["description"] as! String
+                            let time = dict["time"] as! TimeInterval
+                            let tourPhotos = dict["photos"] as! [Int]
+                            
+                            let tourEntry = ARTour(tID: id, t: title, d: description, ps: tourPhotos, time: time)
+                            tours.append(tourEntry)
+                        }
+                    }
+                    //                    print(object)
                 } else if let object = json as? [Any] {
                     // json is an array
                     print(object)
@@ -35,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 print("no file")
             }
+
         } catch {
             print(error.localizedDescription)
         }

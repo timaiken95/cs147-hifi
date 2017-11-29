@@ -98,6 +98,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         self.showPhotoInfo = false
         self.showTourSelections = false
+        self.tourSelectionButtonView.isHidden = true
         self.startExploringButtonView.isHidden = true
         self.showMapButtonView.isHidden = true
         
@@ -227,6 +228,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBAction func startExploringClicked(_ sender: Any) {
         self.startScreenView.isHidden = true
         self.showMapButtonView.isHidden = false
+        self.tourSelectionButtonView.isHidden = false
     }
     
     // MARK: - Location Callback

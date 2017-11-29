@@ -22,11 +22,11 @@
 		11C1C8F51FC5D14D00F598D8 /* ARPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */; };
 		11C1C8F71FC5F7DA00F598D8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C1C8F61FC5F7DA00F598D8 /* Data.swift */; };
 		11CCD0CE1FCCAC5600A0E99C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCD0CD1FCCAC5600A0E99C /* MapViewController.swift */; };
-		11FFF4E11FCE26FD00A34A6D /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4E01FCE26FD00A34A6D /* Fonts */; };
 		11FFF4E81FCE2A3600A34A6D /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4E41FCE273D00A34A6D /* Comfortaa-Bold.ttf */; };
 		11FFF4E91FCE2A3800A34A6D /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4E51FCE274B00A34A6D /* Comfortaa-Light.ttf */; };
 		11FFF4EA1FCE2A3A00A34A6D /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4E61FCE275100A34A6D /* Comfortaa-Regular.ttf */; };
-		11FFF4EB1FCE2A3B00A34A6D /* PoiretOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4E71FCE275700A34A6D /* PoiretOne-Regular.ttf */; };
+		11FFF4ED1FCE341F00A34A6D /* PoiretOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4EC1FCE341700A34A6D /* PoiretOne-Regular.ttf */; };
+		11FFF4F01FCE399E00A34A6D /* AppContent.json in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4EF1FCE399E00A34A6D /* AppContent.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,11 +68,11 @@
 		11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPhoto.swift; sourceTree = "<group>"; };
 		11C1C8F61FC5F7DA00F598D8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		11CCD0CD1FCCAC5600A0E99C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		11FFF4E01FCE26FD00A34A6D /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = SOURCE_ROOT; };
 		11FFF4E41FCE273D00A34A6D /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		11FFF4E51FCE274B00A34A6D /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		11FFF4E61FCE275100A34A6D /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
-		11FFF4E71FCE275700A34A6D /* PoiretOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PoiretOne-Regular.ttf"; path = "Fonts/Poiret_One/PoiretOne-Regular.ttf"; sourceTree = "<group>"; };
+		11FFF4EC1FCE341700A34A6D /* PoiretOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoiretOne-Regular.ttf"; sourceTree = "<group>"; };
+		11FFF4EF1FCE399E00A34A6D /* AppContent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppContent.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +103,8 @@
 		11C1C8B41FC48D5300F598D8 = {
 			isa = PBXGroup;
 			children = (
-				11FFF4E71FCE275700A34A6D /* PoiretOne-Regular.ttf */,
-				11FFF4E61FCE275100A34A6D /* Comfortaa-Regular.ttf */,
-				11FFF4E51FCE274B00A34A6D /* Comfortaa-Light.ttf */,
-				11FFF4E41FCE273D00A34A6D /* Comfortaa-Bold.ttf */,
+				11FFF4EF1FCE399E00A34A6D /* AppContent.json */,
+				11FFF4EE1FCE343600A34A6D /* Fonts */,
 				11C1C8BF1FC48D5300F598D8 /* CS147HiFi */,
 				11C1C8D61FC48D5300F598D8 /* CS147HiFiTests */,
 				11C1C8E11FC48D5300F598D8 /* CS147HiFiUITests */,
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				11C1C8C01FC48D5300F598D8 /* AppDelegate.swift */,
-				11FFF4E01FCE26FD00A34A6D /* Fonts */,
 				11C1C8C21FC48D5300F598D8 /* art.scnassets */,
 				11C1C8C41FC48D5300F598D8 /* ARViewController.swift */,
 				11CCD0CD1FCCAC5600A0E99C /* MapViewController.swift */,
@@ -162,6 +159,17 @@
 				11C1C8E41FC48D5300F598D8 /* Info.plist */,
 			);
 			path = CS147HiFiUITests;
+			sourceTree = "<group>";
+		};
+		11FFF4EE1FCE343600A34A6D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				11FFF4EC1FCE341700A34A6D /* PoiretOne-Regular.ttf */,
+				11FFF4E61FCE275100A34A6D /* Comfortaa-Regular.ttf */,
+				11FFF4E51FCE274B00A34A6D /* Comfortaa-Light.ttf */,
+				11FFF4E41FCE273D00A34A6D /* Comfortaa-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,12 +276,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11FFF4E11FCE26FD00A34A6D /* Fonts in Resources */,
 				11C1C8C31FC48D5300F598D8 /* art.scnassets in Resources */,
 				11C1C8CD1FC48D5300F598D8 /* LaunchScreen.storyboard in Resources */,
 				11C1C8CA1FC48D5300F598D8 /* Assets.xcassets in Resources */,
-				11FFF4EB1FCE2A3B00A34A6D /* PoiretOne-Regular.ttf in Resources */,
 				11FFF4EA1FCE2A3A00A34A6D /* Comfortaa-Regular.ttf in Resources */,
+				11FFF4F01FCE399E00A34A6D /* AppContent.json in Resources */,
+				11FFF4ED1FCE341F00A34A6D /* PoiretOne-Regular.ttf in Resources */,
 				11FFF4E91FCE2A3800A34A6D /* Comfortaa-Light.ttf in Resources */,
 				11FFF4E81FCE2A3600A34A6D /* Comfortaa-Bold.ttf in Resources */,
 				11C1C8C81FC48D5300F598D8 /* Main.storyboard in Resources */,
