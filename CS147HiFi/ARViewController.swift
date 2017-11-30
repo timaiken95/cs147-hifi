@@ -19,9 +19,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var photoTitleBox: UITextView!
     
     @IBOutlet weak var exploreModeTopButtonView: UIView!
+    @IBOutlet weak var tourModeTopButtonView: UIView!
     
     @IBOutlet weak var tourWindowView: UIVisualEffectView!
     
+    @IBOutlet weak var infoButtonView: UIView!
     @IBOutlet weak var startExploringButtonView: UIView!
     @IBOutlet weak var initializingARView: UIView!
     @IBOutlet weak var startScreenView: UIVisualEffectView!
@@ -93,10 +95,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             if self.showTourSelections == true {
                 self.showPhotoInfo = false
                 self.exploreModeTopButtonView.isHidden = true
+                self.infoButtonView.isHidden = true
                 self.tourWindowView.isHidden = false
                 self.showMapButtonView.isHidden = true
             } else {
                 self.exploreModeTopButtonView.isHidden = false
+                self.infoButtonView.isHidden = false
                 self.tourWindowView.isHidden = true
                 self.showMapButtonView.isHidden = false
             }
@@ -136,7 +140,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         self.showPhotoInfo = false
         self.showTourSelections = false
+        self.infoButtonView.isHidden = true
         self.exploreModeTopButtonView.isHidden = true
+        self.tourModeTopButtonView.isHidden = true
         self.startExploringButtonView.isHidden = true
         self.showMapButtonView.isHidden = true
         
@@ -265,6 +271,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.startScreenView.isHidden = true
         self.showMapButtonView.isHidden = false
         self.exploreModeTopButtonView.isHidden = false
+        self.infoButtonView.isHidden = false
     }
     
     // MARK: - Location Callback
