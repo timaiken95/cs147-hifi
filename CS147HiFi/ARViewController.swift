@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 import CoreLocation
 
-class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var photoInfoView: UIVisualEffectView!
@@ -21,6 +21,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var exploreModeTopButtonView: UIView!
     @IBOutlet weak var tourModeTopButtonView: UIView!
     
+    @IBOutlet weak var tourTable: UITableView!
     @IBOutlet weak var tourWindowView: UIVisualEffectView!
     
     @IBOutlet weak var infoButtonView: UIView!
@@ -79,6 +80,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                                              lMan: self.locationManager!)
             
             AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
+            
+            self.tourTable.reloadData()
             
             self.objectManager!.setAllVisible()
             self.objectManager!.updateAllYs(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
@@ -300,5 +303,40 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         print("Distance off \(distanceOff)")
         
+    }
+    
+    // MARK: Table Callback
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if let t = self.tourManager {
+            return t.arTours.count
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tourCell") as! TourTableCell
+        if let t = self.tourManager {
+            let tour = t.arTours[indexPath.section + 1]!
+            cell.tourDuration.text = String(Int(tour.estimatedTime))
+            cell.tourName.text = tour.title
+            cell.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        }
+        return cell
     }
 }
