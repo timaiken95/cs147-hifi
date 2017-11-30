@@ -124,41 +124,54 @@ class ARTourManager: NSObject {
             childNode.removeFromParentNode()
         }
         
-        var prevCoor:CLLocation? = nil
+        guard let startCoor:CLLocation = locationManager.location
+            else { return }
+        
+        var prevCoor:CLLocation = startCoor
         for coor in points {
+            
+            let direction = (coor.latitude - startCoor.coordinate.latitude,
+                             coor.longitude - startCoor.coordinate.longitude)
+            let rotate = Float(atan2(direction.0, direction.1)) + .pi/2
         
             let currCoor = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-            drawNodeOnRoute(loc: currCoor)
+            drawNodeOnRoute(loc: currCoor, dir: rotate)
             
-            if let p = prevCoor {
-                let dist = p.distance(from: currCoor)
-                let divide = Int(ceil(dist / 2.0))
-                let deltaLat = (currCoor.coordinate.latitude - p.coordinate.latitude) / Double(divide)
-                let deltaLong = (currCoor.coordinate.longitude - p.coordinate.longitude) / Double(divide)
+            let dist = prevCoor.distance(from: currCoor)
+            let divide = Int(ceil(dist / 10.0))
+            let deltaLat = (currCoor.coordinate.latitude - prevCoor.coordinate.latitude) / Double(divide)
+            let deltaLong = (currCoor.coordinate.longitude - prevCoor.coordinate.longitude) / Double(divide)
+            
+            for i in 1..<divide {
+                let partialCoor = CLLocation(latitude: prevCoor.coordinate.latitude + deltaLat * Double(i),
+                                             longitude: prevCoor.coordinate.longitude + deltaLong * Double(i))
                 
-                for i in 1..<divide {
-                    let partialCoor = CLLocation(latitude: p.coordinate.latitude + deltaLat * Double(i),
-                                                 longitude: p.coordinate.longitude + deltaLong * Double(i))
-                    
-                    drawNodeOnRoute(loc: partialCoor)
-                }
+                drawNodeOnRoute(loc: partialCoor, dir: rotate)
             }
             
             prevCoor = currCoor
         }
     }
 
-    func drawNodeOnRoute(loc:CLLocation) {
+    func drawNodeOnRoute(loc:CLLocation, dir:Float) {
         guard let currLoc:CLLocation = locationManager.location
             else{ return}
         
-        let sphere:SCNSphere = SCNSphere(radius: 0.1)
-        sphere.firstMaterial!.diffuse.contents = UIColor.red
+        let plane:SCNPlane = SCNPlane(width: 1, height: 1)
+        plane.firstMaterial!.diffuse.contents = #imageLiteral(resourceName: "Direction")
+        plane.firstMaterial!.isDoubleSided = true
         
-        let newNode = SCNNode(geometry: sphere)
+        let newNode = SCNNode(geometry: plane)
+        let wrapperNode = SCNNode()
+        wrapperNode.addChildNode(newNode)
+        
         let nodeLoc = ARObjectManager.getARPosition(currLocCLL: currLoc, currLocAR: self.getARLocation(), objectLocCLL: loc)
-        newNode.position = nodeLoc
-        self.currDirectionsNode.addChildNode(newNode)
+        wrapperNode.position = nodeLoc
+        
+        newNode.eulerAngles = SCNVector3Make(.pi/2, dir, 0)
+        
+        
+        self.currDirectionsNode.addChildNode(wrapperNode)
     }
     
     func updateY(newY:Float) {

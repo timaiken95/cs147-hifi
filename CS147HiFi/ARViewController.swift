@@ -81,7 +81,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
             
             self.objectManager!.setAllVisible()
+            self.objectManager!.updateAllYs(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
+            
             self.tourManager!.startTour(tourID: 1)
+            self.tourManager!.updateY(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
             
             if self.arInitialized {
                 self.initializingARView.isHidden = true
@@ -201,7 +204,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
         
         let newY = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42
-        if abs(newY - self.currCameraY) > 2 {
+        if abs(newY - self.currCameraY) > 1 {
             self.currCameraY = newY
         }
         
