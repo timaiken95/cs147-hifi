@@ -29,6 +29,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var initializingARView: UIView!
     @IBOutlet weak var startScreenView: UIVisualEffectView!
     
+    @IBOutlet weak var tourInfoWindow: UIVisualEffectView!
+    @IBOutlet weak var tourInfoWindowDistanceField: UILabel!
+    @IBOutlet weak var tourInfoWindowTimeField: UILabel!
+    @IBOutlet weak var tourInfoWindowNameField: UILabel!
+    @IBOutlet weak var tourInfoWindowDescriptionField: UITextView!
+    
+    
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
     
     var objectManager:ARObjectManager?
@@ -151,6 +158,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.tourModeTopButtonView.isHidden = true
         self.startExploringButtonView.isHidden = true
         self.showMapButtonView.isHidden = true
+        self.tourInfoWindow.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -280,6 +288,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.infoButtonView.isHidden = false
     }
     
+    @IBAction func exitTourInfoWindow(_ sender: Any) {
+        self.tourInfoWindow.isHidden = true
+    }
+    
+    @IBAction func startTourButtonClicked(_ sender: Any) {
+    }
+    
+    
     // MARK: - Location Callback
     
     // callback for updating location from the location manager
@@ -339,4 +355,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        guard let t = self.tourManager
+            else { return }
+        let tour = t.arTours[indexPath.section + 1]!
+        
+        self.tourInfoWindowNameField.text = tour.title
+        self.tourInfoWindowDescriptionField.text = tour.description
+        
+        let firstPhotoLocation = self.objectManager!.arPhotos[tour.photos[0]]!.location
+        let distanceToFirstPhoto = locationManager!.location!.distance(from: firstPhotoLocation) * 3.3 / 5280.0
+        let totalTime = tour.estimatedTime + distanceToFirstPhoto * 30
+        
+        self.tourInfoWindowTimeField.text = "Total time: " + String(Int(totalTime)) + " min"
+        self.tourInfoWindowDistanceField.text = "Distance to first photo: " + String(format: "%.1f", distanceToFirstPhoto) + " mi"
+        self.tourInfoWindow.isHidden = false
+        
+    }
+    
 }

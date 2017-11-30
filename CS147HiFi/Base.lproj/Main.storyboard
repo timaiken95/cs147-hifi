@@ -497,8 +497,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="325" height="609"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ha2-iO-3qT">
-                                            <rect key="frame" x="10" y="53" width="355" height="494"/>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ha2-iO-3qT">
+                                            <rect key="frame" x="10" y="64.5" width="355" height="482.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="tourCell" id="8g0-Uk-ig6" customClass="TourTableCell" customModule="CS147HiFi" customModuleProvider="target">
@@ -527,7 +527,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8u-qU-Eq1">
-                                                                <rect key="frame" x="305" y="64" width="32.5" height="25"/>
+                                                                <rect key="frame" x="305" y="64" width="28" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="yHR-13-81Q"/>
                                                                 </constraints>
@@ -569,7 +569,7 @@
                                             </connections>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1y-2J-sxf">
-                                            <rect key="frame" x="10" y="10" width="355" height="33.5"/>
+                                            <rect key="frame" x="10" y="20" width="355" height="35"/>
                                             <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -589,7 +589,7 @@
                                         <constraint firstAttribute="trailing" secondItem="ha2-iO-3qT" secondAttribute="trailing" constant="10" id="8Xa-LO-Qzo"/>
                                         <constraint firstItem="z1y-2J-sxf" firstAttribute="leading" secondItem="nKb-oV-fo6" secondAttribute="leading" constant="10" id="Jzp-cD-qBx"/>
                                         <constraint firstItem="ha2-iO-3qT" firstAttribute="top" secondItem="z1y-2J-sxf" secondAttribute="bottom" constant="10" id="Qrt-f3-YWa"/>
-                                        <constraint firstItem="z1y-2J-sxf" firstAttribute="top" secondItem="nKb-oV-fo6" secondAttribute="top" constant="10" id="Uba-xF-hVy"/>
+                                        <constraint firstItem="z1y-2J-sxf" firstAttribute="top" secondItem="nKb-oV-fo6" secondAttribute="top" constant="20" id="Uba-xF-hVy"/>
                                         <constraint firstItem="paK-pw-kVS" firstAttribute="leading" secondItem="nKb-oV-fo6" secondAttribute="leading" constant="10" id="bER-i2-Lzu"/>
                                         <constraint firstItem="paK-pw-kVS" firstAttribute="top" secondItem="ha2-iO-3qT" secondAttribute="bottom" constant="10" id="eO7-kD-RIw"/>
                                         <constraint firstItem="paK-pw-kVS" firstAttribute="top" secondItem="ha2-iO-3qT" secondAttribute="bottom" constant="10" id="h8t-Fg-OUS"/>
@@ -603,6 +603,127 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-Xi-Odc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="qcw-5r-yKI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance to first photo: 0.5 miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTA-KG-MaN">
+                                            <rect key="frame" x="63" y="499" width="287" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="7W0-Jt-W5q"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Duration: 7 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-3B-Llz">
+                                            <rect key="frame" x="129" y="477" width="148" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="kDr-3R-1J0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWx-08-vWI">
+                                            <rect key="frame" x="19" y="20" width="82" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="FHm-Yt-hLl"/>
+                                                <constraint firstAttribute="height" constant="50" id="xZ5-zh-BZb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
+                                            <state key="normal" title="&lt; Back">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="exitTourInfoWindow:" destination="BV1-FR-VrT" eventType="touchUpInside" id="L8b-k3-i6M"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-Hh-pcu">
+                                            <rect key="frame" x="105" y="554" width="165" height="69"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dk-Ia-dpi">
+                                                    <rect key="frame" x="48" y="19" width="69" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
+                                                    <state key="normal" title="Start Tour">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="startTourButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="L5b-fA-jtV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.67450980392156867" green="0.96078431372549022" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="6dk-Ia-dpi" secondAttribute="bottom" id="YLi-6U-wO2"/>
+                                                <constraint firstItem="6dk-Ia-dpi" firstAttribute="leading" secondItem="6SO-Hh-pcu" secondAttribute="leading" id="i0M-pU-k4f"/>
+                                                <constraint firstItem="6dk-Ia-dpi" firstAttribute="top" secondItem="6SO-Hh-pcu" secondAttribute="top" id="iKH-L3-cfS"/>
+                                                <constraint firstAttribute="trailing" secondItem="6dk-Ia-dpi" secondAttribute="trailing" id="mXf-M8-y2c"/>
+                                                <constraint firstAttribute="height" constant="70" id="sCc-Os-6Ke"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="35"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BS-YV-ti9">
+                                            <rect key="frame" x="59" y="118" width="269" height="284"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="275" id="s68-Dn-u05"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tour Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGI-j3-uUn">
+                                            <rect key="frame" x="50" y="63" width="317" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="vUk-wd-PTT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tour Info:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0L-2x-qbB">
+                                            <rect key="frame" x="151" y="448" width="100" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="L1t-cZ-Wz2"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="1BS-YV-ti9" secondAttribute="trailing" constant="50" id="03a-u3-VPG"/>
+                                        <constraint firstAttribute="trailing" secondItem="jzY-3B-Llz" secondAttribute="trailing" id="5zL-KF-ShP"/>
+                                        <constraint firstItem="jzY-3B-Llz" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" id="B59-Xo-Axb"/>
+                                        <constraint firstAttribute="trailing" secondItem="6SO-Hh-pcu" secondAttribute="trailing" constant="100" id="E0R-rl-87j"/>
+                                        <constraint firstAttribute="trailing" secondItem="M0L-2x-qbB" secondAttribute="trailing" id="EjO-Sc-mVP"/>
+                                        <constraint firstItem="CTA-KG-MaN" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" id="Icg-eV-RZj"/>
+                                        <constraint firstItem="LWx-08-vWI" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" constant="10" id="Nuz-cC-NLA"/>
+                                        <constraint firstItem="CTA-KG-MaN" firstAttribute="top" secondItem="jzY-3B-Llz" secondAttribute="bottom" id="Oar-qN-aUA"/>
+                                        <constraint firstItem="LWx-08-vWI" firstAttribute="top" secondItem="qcw-5r-yKI" secondAttribute="top" constant="20" id="SpU-jM-vLZ"/>
+                                        <constraint firstItem="sGI-j3-uUn" firstAttribute="top" secondItem="qcw-5r-yKI" secondAttribute="top" constant="75" id="fIO-Fy-CEO"/>
+                                        <constraint firstItem="sGI-j3-uUn" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" constant="25" id="jFi-yj-n2V"/>
+                                        <constraint firstItem="6SO-Hh-pcu" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" constant="100" id="jmg-Xv-7NV"/>
+                                        <constraint firstAttribute="trailing" secondItem="sGI-j3-uUn" secondAttribute="trailing" constant="25" id="lMq-Wj-4x1"/>
+                                        <constraint firstItem="1BS-YV-ti9" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" constant="50" id="mb0-Ny-NJO"/>
+                                        <constraint firstAttribute="trailing" secondItem="CTA-KG-MaN" secondAttribute="trailing" id="mn9-GO-PwS"/>
+                                        <constraint firstItem="6SO-Hh-pcu" firstAttribute="top" secondItem="CTA-KG-MaN" secondAttribute="bottom" constant="35" id="wPK-sN-cps"/>
+                                        <constraint firstItem="jzY-3B-Llz" firstAttribute="top" secondItem="M0L-2x-qbB" secondAttribute="bottom" constant="5" id="wtv-8l-XAL"/>
+                                        <constraint firstItem="M0L-2x-qbB" firstAttribute="leading" secondItem="qcw-5r-yKI" secondAttribute="leading" id="wzY-bf-owf"/>
+                                        <constraint firstItem="1BS-YV-ti9" firstAttribute="top" secondItem="sGI-j3-uUn" secondAttribute="bottom" constant="25" id="xYc-BU-Nbk"/>
+                                        <constraint firstAttribute="bottom" secondItem="6SO-Hh-pcu" secondAttribute="bottom" constant="50" id="yI2-vP-GQJ"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,6 +767,11 @@
                         <outlet property="showMapButtonView" destination="uAJ-8X-HKo" id="mks-hY-GYU"/>
                         <outlet property="startExploringButtonView" destination="eO8-9R-BCy" id="CT9-mh-N5u"/>
                         <outlet property="startScreenView" destination="dhu-Dz-7RW" id="ORp-M4-ZeI"/>
+                        <outlet property="tourInfoWindow" destination="H1P-Xi-Odc" id="nxh-bp-6St"/>
+                        <outlet property="tourInfoWindowDescriptionField" destination="1BS-YV-ti9" id="pAr-KN-4bZ"/>
+                        <outlet property="tourInfoWindowDistanceField" destination="CTA-KG-MaN" id="VRq-Nu-AzJ"/>
+                        <outlet property="tourInfoWindowNameField" destination="sGI-j3-uUn" id="av3-jf-vEd"/>
+                        <outlet property="tourInfoWindowTimeField" destination="jzY-3B-Llz" id="qSY-Jb-YmQ"/>
                         <outlet property="tourModeTopButtonView" destination="xoD-t5-ehF" id="a6w-Jb-od9"/>
                         <outlet property="tourTable" destination="ha2-iO-3qT" id="B0O-SA-yan"/>
                         <outlet property="tourWindowView" destination="dNc-Fz-lno" id="9dL-S8-dwf"/>
@@ -708,6 +834,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEb-lJ-TpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="890" y="802"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="uym-P3-JZv">
+            <objects>
+                <viewControllerPlaceholder id="uIr-GL-Taf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xPm-ib-0Ug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
