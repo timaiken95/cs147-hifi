@@ -59,6 +59,12 @@ class ARObjectManager {
         arPhotos[pID]!.visible = true
     }
     
+    func updateAllYs(newY:Float) {
+        for photo in self.arPhotos.values {
+            photo.updateY(newY: newY)
+        }
+    }
+    
      // https://developer.apple.com/documentation/arkit/arconfiguration.worldalignment/2873776-gravityandheading
     class func getARPosition(currLocCLL:CLLocation, currLocAR:SCNVector3, objectLocCLL:CLLocation) -> SCNVector3 {
         

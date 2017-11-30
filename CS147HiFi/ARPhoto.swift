@@ -73,4 +73,10 @@ class ARPhoto {
         self.geometryNode.position = loc
     }
     
+    func updateY(newY:Float) {
+        self.geometryNode.position = SCNVector3Make(self.geometryNode.position.x,
+                                                    newY,
+                                                    self.geometryNode.position.z)
+    }
+    
 }

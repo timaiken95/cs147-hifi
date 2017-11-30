@@ -28,10 +28,10 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tp-TB-C9j">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyF-y4-XgD">
-                                <rect key="frame" x="25" y="95" width="325" height="522"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyF-y4-XgD">
+                                <rect key="frame" x="25" y="110" width="325" height="507"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HDk-vB-dRJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="325" height="522"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="325" height="507"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="TITLE" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-iD-IdX">
@@ -40,7 +40,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfx-kb-W53">
-                                            <rect key="frame" x="5" y="75" width="315" height="398"/>
+                                            <rect key="frame" x="5" y="75" width="315" height="382"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -57,7 +57,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </textView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNe-jj-LlZ">
-                                            <rect key="frame" x="10" y="483" width="305" height="30"/>
+                                            <rect key="frame" x="10" y="467" width="305" height="30"/>
                                             <state key="normal" title="Close"/>
                                             <connections>
                                                 <action selector="closePhotoInfoWindow:" destination="BV1-FR-VrT" eventType="touchUpInside" id="UGJ-wN-1g0"/>
@@ -82,107 +82,6 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhu-Dz-7RW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r7I-fS-BA4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StanX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agF-9O-J8X">
-                                            <rect key="frame" x="0.0" y="78" width="375" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="48"/>
-                                            <color key="textColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="highlightedColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-9R-BCy">
-                                            <rect key="frame" x="65" y="472" width="245" height="70"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhF-bu-N4z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="22"/>
-                                                    <state key="normal" title="Start Exploring">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="startExploringClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="PtP-jK-jkb"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="vB3-7m-Cdk"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <integer key="value" value="35"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rca-K3-cJL">
-                                            <rect key="frame" x="8" y="214" width="358" height="224"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initializing AR Experience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uL-gC-mAp">
-                                                    <rect key="frame" x="8" y="8" width="350" height="140"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lmZ-hY-qps">
-                                                    <rect key="frame" x="170" y="103" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </activityIndicatorView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="eO8-9R-BCy" firstAttribute="leading" secondItem="r7I-fS-BA4" secondAttribute="leading" constant="65" id="4Ov-mv-CWU"/>
-                                        <constraint firstAttribute="bottom" secondItem="eO8-9R-BCy" secondAttribute="bottom" constant="125" id="T2x-0g-ld6"/>
-                                        <constraint firstAttribute="trailing" secondItem="eO8-9R-BCy" secondAttribute="trailing" constant="65" id="Z7H-kr-crn"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pYK-EZ-V7t">
-                                <rect key="frame" x="40" y="5" width="295" height="68"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OOL-Um-pbH">
-                                    <rect key="frame" x="0.0" y="0.0" width="295" height="68"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tix-Jm-b6d">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="49"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                            <state key="normal" title="Take a Tour">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="tourSelectionButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rHs-iu-lIX"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Tix-Jm-b6d" secondAttribute="bottom" id="7x6-LB-sit"/>
-                                        <constraint firstItem="Tix-Jm-b6d" firstAttribute="top" secondItem="OOL-Um-pbH" secondAttribute="top" id="KFc-B7-PD7"/>
-                                        <constraint firstAttribute="trailing" secondItem="Tix-Jm-b6d" secondAttribute="trailing" id="P8h-sX-F8f"/>
-                                        <constraint firstItem="Tix-Jm-b6d" firstAttribute="leading" secondItem="OOL-Um-pbH" secondAttribute="leading" id="bda-iK-Fwt"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
@@ -247,15 +146,88 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhu-Dz-7RW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r7I-fS-BA4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StanX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agF-9O-J8X">
+                                            <rect key="frame" x="0.0" y="78" width="375" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="48"/>
+                                            <color key="textColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="highlightedColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-9R-BCy">
+                                            <rect key="frame" x="65" y="472" width="245" height="70"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhF-bu-N4z">
+                                                    <rect key="frame" x="4" y="4" width="237" height="62"/>
+                                                    <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="22"/>
+                                                    <state key="normal" title="Start Exploring">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="startExploringClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="PtP-jK-jkb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="rhF-bu-N4z" firstAttribute="leading" secondItem="eO8-9R-BCy" secondAttribute="leading" constant="4" id="6bg-im-rA5"/>
+                                                <constraint firstAttribute="trailing" secondItem="rhF-bu-N4z" secondAttribute="trailing" constant="4" id="ERp-90-3Q9"/>
+                                                <constraint firstAttribute="bottom" secondItem="rhF-bu-N4z" secondAttribute="bottom" constant="4" id="Lzu-UM-ZJk"/>
+                                                <constraint firstItem="rhF-bu-N4z" firstAttribute="top" secondItem="eO8-9R-BCy" secondAttribute="top" constant="4" id="he7-5f-OGw"/>
+                                                <constraint firstAttribute="height" constant="70" id="vB3-7m-Cdk"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="35"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rca-K3-cJL">
+                                            <rect key="frame" x="8" y="214" width="358" height="224"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initializing AR Experience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uL-gC-mAp">
+                                                    <rect key="frame" x="8" y="8" width="350" height="140"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lmZ-hY-qps">
+                                                    <rect key="frame" x="170" y="103" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eO8-9R-BCy" firstAttribute="leading" secondItem="r7I-fS-BA4" secondAttribute="leading" constant="65" id="4Ov-mv-CWU"/>
+                                        <constraint firstAttribute="bottom" secondItem="eO8-9R-BCy" secondAttribute="bottom" constant="125" id="T2x-0g-ld6"/>
+                                        <constraint firstAttribute="trailing" secondItem="eO8-9R-BCy" secondAttribute="trailing" constant="65" id="Z7H-kr-crn"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAJ-8X-HKo">
                                 <rect key="frame" x="40" y="527" width="100" height="100"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6cG-jI-aUI">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgZ-9K-aal">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgZ-9K-aal">
                                             <rect key="frame" x="15" y="15" width="70" height="70"/>
-                                            <state key="normal" title="Map"/>
+                                            <state key="normal" image="mapIcon"/>
                                             <connections>
                                                 <segue destination="bro-0c-PUu" kind="popoverPresentation" popoverAnchorView="mgZ-9K-aal" id="v9m-Tw-Bq2">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -281,16 +253,44 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdS-O2-BcK">
+                                <rect key="frame" x="50" y="40" width="275" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tix-Jm-b6d">
+                                        <rect key="frame" x="5" y="10" width="265" height="45"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="32"/>
+                                        <state key="normal" title="Take a Tour">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tourSelectionButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rHs-iu-lIX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.67450980392156867" green="0.96078431372549022" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Tix-Jm-b6d" secondAttribute="bottom" constant="5" id="48A-Ah-z3T"/>
+                                    <constraint firstItem="Tix-Jm-b6d" firstAttribute="top" secondItem="ZdS-O2-BcK" secondAttribute="top" constant="10" id="FKi-Jg-SSM"/>
+                                    <constraint firstAttribute="height" constant="60" id="RbN-Gt-DNd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tix-Jm-b6d" secondAttribute="trailing" constant="5" id="hr3-J8-5D4"/>
+                                    <constraint firstItem="Tix-Jm-b6d" firstAttribute="leading" secondItem="ZdS-O2-BcK" secondAttribute="leading" constant="5" id="yfp-2s-ahv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pYK-EZ-V7t" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" constant="40" id="14Z-yQ-csV"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="bottom" secondItem="uAJ-8X-HKo" secondAttribute="bottom" constant="40" id="8Vc-3R-967"/>
-                            <constraint firstItem="pYK-EZ-V7t" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="40" id="BnF-2u-a15"/>
+                            <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="ZdS-O2-BcK" secondAttribute="trailing" constant="50" id="AAu-2n-SoM"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="bottom" secondItem="dNc-Fz-lno" secondAttribute="bottom" constant="25" id="E4S-Kf-qyL"/>
                             <constraint firstItem="dhu-Dz-7RW" firstAttribute="bottom" secondItem="Odq-Nz-7rp" secondAttribute="bottom" id="HzX-j3-ZQV"/>
                             <constraint firstItem="dhu-Dz-7RW" firstAttribute="trailing" secondItem="Odq-Nz-7rp" secondAttribute="trailing" id="J9u-bU-l3b"/>
                             <constraint firstItem="1tp-TB-C9j" firstAttribute="bottom" secondItem="Odq-Nz-7rp" secondAttribute="bottom" id="LFe-CH-Njn"/>
+                            <constraint firstItem="ZdS-O2-BcK" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" constant="40" id="LO0-hr-sw2"/>
                             <constraint firstItem="dNc-Fz-lno" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="25" id="Oa3-uy-mhN"/>
                             <constraint firstItem="1tp-TB-C9j" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" id="Tod-bW-Jiz"/>
                             <constraint firstItem="dNc-Fz-lno" firstAttribute="top" secondItem="Odq-Nz-7rp" secondAttribute="top" constant="25" id="Val-rH-HBV"/>
@@ -298,11 +298,11 @@
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="dNc-Fz-lno" secondAttribute="trailing" constant="25" id="XhM-ey-tvN"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="xyF-y4-XgD" secondAttribute="trailing" constant="25" id="dFe-wd-IAm"/>
                             <constraint firstItem="1tp-TB-C9j" firstAttribute="trailing" secondItem="Odq-Nz-7rp" secondAttribute="trailing" id="eVI-De-Flx"/>
+                            <constraint firstItem="ZdS-O2-BcK" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="50" id="f3K-ZU-COe"/>
                             <constraint firstItem="xyF-y4-XgD" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="25" id="heU-8l-Zag"/>
                             <constraint firstItem="dhu-Dz-7RW" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" id="mBB-Go-yfF"/>
                             <constraint firstItem="Odq-Nz-7rp" firstAttribute="bottom" secondItem="xyF-y4-XgD" secondAttribute="bottom" constant="50" id="n4O-fi-Waq"/>
-                            <constraint firstItem="Odq-Nz-7rp" firstAttribute="trailing" secondItem="pYK-EZ-V7t" secondAttribute="trailing" constant="40" id="oV8-hn-NFj"/>
-                            <constraint firstItem="xyF-y4-XgD" firstAttribute="top" secondItem="pYK-EZ-V7t" secondAttribute="bottom" constant="5" id="r80-9h-5No"/>
+                            <constraint firstItem="xyF-y4-XgD" firstAttribute="top" secondItem="ZdS-O2-BcK" secondAttribute="bottom" constant="10" id="uF5-cF-Xzv"/>
                             <constraint firstItem="uAJ-8X-HKo" firstAttribute="leading" secondItem="Odq-Nz-7rp" secondAttribute="leading" constant="40" id="vi2-mJ-q6q"/>
                             <constraint firstItem="dhu-Dz-7RW" firstAttribute="top" secondItem="ePw-kS-Iyd" secondAttribute="top" id="xUu-k9-TgT"/>
                         </constraints>
@@ -317,7 +317,7 @@
                         <outlet property="showMapButtonView" destination="uAJ-8X-HKo" id="mks-hY-GYU"/>
                         <outlet property="startExploringButtonView" destination="eO8-9R-BCy" id="CT9-mh-N5u"/>
                         <outlet property="startScreenView" destination="dhu-Dz-7RW" id="ORp-M4-ZeI"/>
-                        <outlet property="tourSelectionButtonView" destination="pYK-EZ-V7t" id="1Yo-Ri-ydr"/>
+                        <outlet property="tourSelectionButtonView" destination="ZdS-O2-BcK" id="jde-oY-S2U"/>
                         <outlet property="tourWindowView" destination="dNc-Fz-lno" id="9dL-S8-dwf"/>
                     </connections>
                 </viewController>
@@ -380,4 +380,7 @@
             <point key="canvasLocation" x="890" y="802"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mapIcon" width="55" height="54"/>
+    </resources>
 </document>

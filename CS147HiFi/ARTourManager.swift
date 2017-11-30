@@ -161,6 +161,12 @@ class ARTourManager: NSObject {
         self.currDirectionsNode.addChildNode(newNode)
     }
     
+    func updateY(newY:Float) {
+        self.currDirectionsNode.position = SCNVector3Make(self.currDirectionsNode.position.x,
+                                                          newY,
+                                                          self.currDirectionsNode.position.z)
+    }
+    
     
     
 }

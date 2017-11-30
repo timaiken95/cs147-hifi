@@ -18,7 +18,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var photoDescriptionBox: UITextView!
     @IBOutlet weak var photoTitleBox: UITextView!
     
-    @IBOutlet weak var tourSelectionButtonView: UIVisualEffectView!
+    @IBOutlet weak var tourSelectionButtonView: UIView!
+    
     @IBOutlet weak var tourWindowView: UIVisualEffectView!
     
     @IBOutlet weak var startExploringButtonView: UIView!
@@ -35,6 +36,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     var initialARLocation:SCNVector3?
     var initialCLLocation:CLLocation?
+    var currCameraY:Float = 0 {
+        didSet {
+            if let tm = self.tourManager {
+                tm.updateY(newY: self.currCameraY - 2.0)
+            }
+            
+            if let om = self.objectManager {
+                om.updateAllYs(newY: self.currCameraY - 2.0)
+            }
+        }
+    }
     
     var arInitialized:Bool = false {
         didSet {
@@ -65,6 +77,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                                              lMan: self.locationManager!)
             
             AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
+            
+            self.objectManager!.setAllVisible()
+            self.tourManager!.startTour(tourID: 1)
             
             if self.arInitialized {
                 self.initializingARView.isHidden = true
@@ -164,6 +179,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 
                 let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
                 self.initialARLocation = SCNVector3(mat.m41, mat.m42, mat.m43)
+                self.currCameraY = mat.m42
                 self.arInitialized = true
                 return
             }
@@ -171,6 +187,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         default:
             return
         }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if !self.arInitialized {
+            return
+        }
+        
+        let newY = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42
+        if abs(newY - self.currCameraY) > 2 {
+            self.currCameraY = newY
+        }
+        
     }
 
     /*
