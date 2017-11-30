@@ -33,21 +33,10 @@ class ARObjectManager {
         return SCNVector3(mat.m41, mat.m42, mat.m43)
     }
     
-    func addARItem(photoId:Int, file:String, title:String, description:String, lat:Float, long:Float, tours:[Int], scale:Float) {
-        let newPhoto:ARPhoto = ARPhoto(pID: photoId,
-                                       filename: file,
-                                       t: title,
-                                       d: description,
-                                       lat: lat,
-                                       long: long,
-                                       ts: tours,
-                                       s: scale)
-        
+    func addARItem(newPhoto:ARPhoto) {
         self.arScene.scene.rootNode.addChildNode(newPhoto.geometryNode)
-        
         newPhoto.updatePosition(currLocCLL: locationManager.location!, currLocAR: getARLocation())
-        self.arPhotos[photoId] = newPhoto
-        
+        self.arPhotos[newPhoto.photoID] = newPhoto
     }
     
     func getPhotoForNode(node:SCNNode) -> ARPhoto? {

@@ -50,18 +50,10 @@ class ARTourManager: NSObject {
     }
     
     
-    func addARTour(tourID:Int, title:String, description:String, photos:[Int], time:TimeInterval) {
-        
-        let newTour:ARTour = ARTour(tID: tourID,
-                                    t: title,
-                                    d: description,
-                                    ps: photos,
-                                    time: time)
-        
-        self.arTours[tourID] = newTour
+    func addARTour(newTour:ARTour) {
+        self.arTours[newTour.tourID] = newTour
         
         // https://stackoverflow.com/questions/21861403/latitude-and-longitude-points-from-mkpolyline
-        
     }
     
     func startTour(tourID:Int) {

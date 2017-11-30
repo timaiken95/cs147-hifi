@@ -15,57 +15,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var photos:[ARPhoto] = []
     var tours:[ARTour] = []
+    var dataInitialized:Bool = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        do {
-            if let file = Bundle.main.url(forResource: "AppContent", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
-                    // json is a dictionary
-                    
-                    if let photoDicts = object["photos"] as? [[String:Any]] {
-                        for dict in photoDicts {
-                            let id = dict["photoId"] as! Int
-                            let file = dict["file"] as! String
-                            let title = dict["title"] as! String
-                            let description = dict["description"] as! String
-                            let lat = dict["lat"] as! Float
-                            let long = dict["long"] as! Float
-                            let tours = dict["tours"] as! [Int]
-                            
-                            let photoEntry = ARPhoto(pID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours, s: 1)
-                            photos.append(photoEntry)
+        DispatchQueue.global(qos: .userInitiated).async {
+        
+            do {
+                if let file = Bundle.main.url(forResource: "AppContent", withExtension: "json") {
+                    let data = try Data(contentsOf: file)
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let object = json as? [String: Any] {
+                        // json is a dictionary
+                        
+                        if let photoDicts = object["photos"] as? [[String:Any]] {
+                            for dict in photoDicts {
+                                let id = dict["photoId"] as! Int
+                                let file = dict["file"] as! String
+                                let title = dict["title"] as! String
+                                let description = dict["description"] as! String
+                                let lat = dict["lat"] as! Float
+                                let long = dict["long"] as! Float
+                                let tours = dict["tours"] as! [Int]
+                                
+                                let photoEntry = ARPhoto(pID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours, s: 1)
+                                self.photos.append(photoEntry)
+                            }
                         }
-                    }
-                    
-                    if let tourDicts = object["tours"] as? [[String:Any]] {
-                        for dict in tourDicts {
-                            let id = dict["tourId"] as! Int
-                            let title = dict["title"] as! String
-                            let description = dict["description"] as! String
-                            let time = dict["time"] as! TimeInterval
-                            let tourPhotos = dict["photos"] as! [Int]
-                            
-                            let tourEntry = ARTour(tID: id, t: title, d: description, ps: tourPhotos, time: time)
-                            tours.append(tourEntry)
+                        
+                        if let tourDicts = object["tours"] as? [[String:Any]] {
+                            for dict in tourDicts {
+                                let id = dict["tourId"] as! Int
+                                let title = dict["title"] as! String
+                                let description = dict["description"] as! String
+                                let time = dict["time"] as! TimeInterval
+                                let tourPhotos = dict["photos"] as! [Int]
+                                
+                                let tourEntry = ARTour(tID: id, t: title, d: description, ps: tourPhotos, time: time)
+                                self.tours.append(tourEntry)
+                            }
                         }
+                        
+                        self.dataInitialized = true
+                        
+                        DispatchQueue.main.async {
+                            let vc = self.window?.rootViewController as! ViewController
+                            vc.dataReady = true
+                        }
+                        
+                        //                    print(object)
+                    } else if let object = json as? [Any] {
+                        // json is an array
+                        print(object)
+                    } else {
+                        print("JSON is invalid")
                     }
-                    //                    print(object)
-                } else if let object = json as? [Any] {
-                    // json is an array
-                    print(object)
                 } else {
-                    print("JSON is invalid")
+                    print("no file")
                 }
-            } else {
-                print("no file")
-            }
 
-        } catch {
-            print(error.localizedDescription)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         
         return true

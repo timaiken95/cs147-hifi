@@ -36,7 +36,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     var initialARLocation:SCNVector3?
     var initialCLLocation:CLLocation?
     
-    var initialized:Bool = false
+    var arInitialized:Bool = false {
+        didSet {
+            if self.dataReady {
+                self.initializingARView.isHidden = true
+                self.startExploringButtonView.isHidden = false
+            }
+        }
+    }
     
     var showPhotoInfo:Bool = false {
         didSet {
@@ -46,6 +53,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             } else {
                 self.photoInfoView.isHidden = true
                 self.showMapButtonView.isHidden = false
+            }
+        }
+    }
+    
+    var dataReady:Bool = false {
+        didSet {
+            self.objectManager = ARObjectManager(sceneView: self.sceneView, lMan: self.locationManager!)
+            self.tourManager = ARTourManager(sceneView: self.sceneView,
+                                             objectManager: self.objectManager!,
+                                             lMan: self.locationManager!)
+            
+            AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
+            
+            if self.arInitialized {
+                self.initializingARView.isHidden = true
+                self.startExploringButtonView.isHidden = false
             }
         }
     }
@@ -137,26 +160,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         switch camera.trackingState {
         case ARCamera.TrackingState.normal:
-            if self.initialized == false {
+            if self.arInitialized == false {
                 
                 let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
                 self.initialARLocation = SCNVector3(mat.m41, mat.m42, mat.m43)
-                
-                
-                
-                self.objectManager = ARObjectManager(sceneView: self.sceneView, lMan: self.locationManager!)
-                self.tourManager = ARTourManager(sceneView: self.sceneView,
-                                                 objectManager: self.objectManager!,
-                                                 lMan: self.locationManager!)
-                
-                AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
-                
-                self.tourManager!.startTour(tourID: 0)
-                
-                self.initializingARView.isHidden = true
-                self.startExploringButtonView.isHidden = false
-                
-                self.initialized = true
+                self.arInitialized = true
                 return
             }
             
