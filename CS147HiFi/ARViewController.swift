@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var tourInfoWindowNameField: UILabel!
     @IBOutlet weak var tourInfoWindowDescriptionField: UITextView!
     
+    @IBOutlet weak var doneWithTourButton: UIView!
     
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
     
@@ -92,9 +93,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             
             self.objectManager!.setAllVisible()
             self.objectManager!.updateAllYs(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
-            
-            self.tourManager!.startTour(tourID: 1)
-            self.tourManager!.updateY(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
             
             if self.arInitialized {
                 self.initializingARView.isHidden = true
@@ -293,6 +291,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func startTourButtonClicked(_ sender: Any) {
+        self.tourManager!.startTour(tourID: 1)
+        self.tourManager!.updateY(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
+        self.showTourSelections = false
+        self.tourInfoWindow.isHidden = true
+        self.exploreModeTopButtonView.isHidden = true
+        self.tourModeTopButtonView.isHidden = false
+        self.doneWithTourButton.isHidden = true
+        self.showMapButtonView.isHidden = true
+        
     }
     
     
