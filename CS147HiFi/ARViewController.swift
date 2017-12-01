@@ -39,6 +39,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var doneWithTourButton: UIView!
     @IBOutlet weak var cancelTourView: UIVisualEffectView!
     
+    @IBOutlet weak var tourDistanceLeftLabel: UILabel!
+    @IBOutlet weak var tourStoriesFoundLabel: UILabel!
+    
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
     
     @IBOutlet weak var infoScreenView: UIVisualEffectView!
@@ -53,6 +56,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     var locationManager:CLLocationManager?
     
     var session:ARSession?
+    
+    var tour:ARTour?
     
     var initialARLocation:SCNVector3?
     var initialCLLocation:CLLocation?
@@ -94,7 +99,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             self.objectManager = ARObjectManager(sceneView: self.sceneView, lMan: self.locationManager!)
             self.tourManager = ARTourManager(sceneView: self.sceneView,
                                              objectManager: self.objectManager!,
-                                             lMan: self.locationManager!)
+                                             lMan: self.locationManager!,
+                                             distLeft: self.tourDistanceLeftLabel,
+                                             storiesFound: self.tourStoriesFoundLabel
+            )
             
             AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
             
@@ -218,14 +226,31 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
     }
     
+    var previousTime:TimeInterval = 0
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        
+        if time - self.previousTime < 1 {
+            return
+        }
+        self.previousTime = time
+        
         if !self.arInitialized {
             return
         }
+        let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
         
-        let newY = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42
+        let newY = mat.m42
         if abs(newY - self.currCameraY) > 1 {
             self.currCameraY = newY
+        }
+        
+        guard let tm = self.tourManager, let _ = tm.currTour else { return }
+        
+        let currLocation:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43)
+        tm.checkIfAdvance(loc: currLocation)
+        
+        if tm.finished {
+            self.doneWithTourButton.isHidden = false
         }
         
     }
@@ -300,10 +325,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBAction func exitTourInfoWindow(_ sender: Any) {
         self.tourInfoWindow.isHidden = true
+        self.tour = nil
     }
     
     @IBAction func startTourButtonClicked(_ sender: Any) {
-        self.tourManager!.startTour(tourID: 1)
+        self.tourManager!.startTour(tourID: self.tour!.tourID)
         self.tourManager!.updateY(newY: SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform).m42 - 2.0)
         self.showTourSelections = false
         self.tourInfoWindow.isHidden = true
@@ -312,6 +338,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.doneWithTourButton.isHidden = true
         self.showMapButtonView.isHidden = true
         
+    }
+    @IBAction func doneWithTourButtonClicked(_ sender: Any) {
+        self.tourManager!.endTour()
+        self.tourModeTopButtonView.isHidden = true
+        self.showMapButtonView.isHidden = false
+        self.exploreModeTopButtonView.isHidden = false
     }
     
     @IBAction func cancelTourButtonClicked(_ sender: Any) {
@@ -411,14 +443,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         guard let t = self.tourManager
             else { return }
-        let tour = t.arTours[indexPath.section + 1]!
+        self.tour = t.arTours[indexPath.section + 1]!
         
-        self.tourInfoWindowNameField.text = tour.title
-        self.tourInfoWindowDescriptionField.text = tour.description
+        self.tourInfoWindowNameField.text = self.tour!.title
+        self.tourInfoWindowDescriptionField.text = self.tour!.description
         
-        let firstPhotoLocation = self.objectManager!.arPhotos[tour.photos[0]]!.location
+        let firstPhotoLocation = self.objectManager!.arPhotos[self.tour!.photos[0]]!.location
         let distanceToFirstPhoto = locationManager!.location!.distance(from: firstPhotoLocation) * 3.3 / 5280.0
-        let totalTime = tour.estimatedTime + distanceToFirstPhoto * 30
+        let totalTime = self.tour!.estimatedTime + distanceToFirstPhoto * 30
         
         self.tourInfoWindowTimeField.text = "Total time: " + String(Int(totalTime)) + " min"
         self.tourInfoWindowDistanceField.text = "Distance to first photo: " + String(format: "%.1f", distanceToFirstPhoto) + " mi"

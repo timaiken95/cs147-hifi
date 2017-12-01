@@ -22,6 +22,11 @@ class ARTourManager: NSObject {
     var currTour:ARTour? = nil
     var currDirectionsNode:SCNNode = SCNNode()
     
+    let storiesFoundLabel:UILabel
+    let distanceLeftLabel:UILabel
+    
+    var finished = false
+    
     var currPhotoIndex:Int? = nil
     var currPID:Int? {
         get {
@@ -33,13 +38,16 @@ class ARTourManager: NSObject {
         }
     }
     
-    init(sceneView: ARSCNView, objectManager:ARObjectManager, lMan:CLLocationManager) {
+    init(sceneView: ARSCNView, objectManager:ARObjectManager, lMan:CLLocationManager, distLeft:UILabel, storiesFound:UILabel) {
         
         self.arScene = sceneView
         self.manager = objectManager
         self.arTours = [:]
         self.locationManager = lMan
         self.arScene.scene.rootNode.addChildNode(self.currDirectionsNode)
+        
+        self.distanceLeftLabel = distLeft
+        self.storiesFoundLabel = storiesFound
         
     }
     
@@ -60,11 +68,13 @@ class ARTourManager: NSObject {
         guard let _ = self.arTours[tourID]
             else { return }
         
+        self.distanceLeftLabel.text = "-- mi"
+        
         self.currTour = self.arTours[tourID]
         self.currPhotoIndex = 0
         
         for pID in self.manager.arPhotos.keys {
-            if pID == self.arTours[tourID]!.photos[0] {
+            if pID == self.currPID! {
                 self.manager.setPhotoVisible(pID: pID)
             } else {
                 self.manager.setPhotoInvisible(pID: pID)
@@ -72,11 +82,36 @@ class ARTourManager: NSObject {
         }
         
         displayDirectionsToCurrPhoto()
+        displayPhotosFound()
+        displayDistanceLeftInTour()
+    }
+    
+    func checkIfAdvance(loc:SCNVector3) {
+        guard let pid = self.currPID else { return }
+        
+        let photo:ARPhoto = self.manager.arPhotos[pid]!
+        let dist = SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc)
+        
+        if dist < 10 {
+            if !self.advanceTour() {
+                self.finished = true
+                for childNode in self.currDirectionsNode.childNodes {
+                    childNode.removeFromParentNode()
+                }
+            }
+            
+            displayPhotosFound()
+            
+        }
+        
+        displayDistanceLeftInTour()
+        
     }
     
     func advanceTour() -> Bool {
         if self.currPhotoIndex != nil && self.currPhotoIndex! < self.currTour!.photos.count {
             self.currPhotoIndex! += 1
+            self.manager.setPhotoVisible(pID: self.currPID!)
             displayDirectionsToCurrPhoto()
             return true
         }
@@ -91,8 +126,71 @@ class ARTourManager: NSObject {
         }
         
         self.currPhotoIndex = nil
+        self.finished = false
         self.currTour = nil
         self.manager.setAllVisible()
+    }
+    
+    func displayDistanceLeftInTour() {
+        
+        guard let cidx = currPhotoIndex, let currLoc:CLLocation = locationManager.location, let t = currTour
+            else { return }
+        
+        DispatchQueue.global(qos: .background).async {
+            let semaphore:DispatchSemaphore = DispatchSemaphore(value: 0)
+            var mutex:pthread_mutex_t = pthread_mutex_t()
+            let numToWait:Int = t.photos.count - cidx
+            
+            var locs:[CLLocationCoordinate2D] = []
+            for i in cidx..<t.photos.count {
+                locs.append(self.manager.arPhotos[t.photos[i]]!.location.coordinate)
+            }
+            
+            var dist:Double = 0
+            
+            var prevCoor:CLLocationCoordinate2D = currLoc.coordinate
+            for coor in locs {
+                let start:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: prevCoor))
+                let end:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: coor))
+                
+                let request:MKDirectionsRequest = MKDirectionsRequest()
+                request.source = start
+                request.destination = end
+                request.requestsAlternateRoutes = false
+                request.transportType = .walking
+                
+                let directions = MKDirections(request: request)
+                directions.calculate { (response: MKDirectionsResponse?, error: Error?) in
+                    if let r = response?.routes[0] {
+                        pthread_mutex_lock(&mutex)
+                        dist += r.distance * 3.3 / 5280
+                        pthread_mutex_unlock(&mutex)
+                    }
+                    semaphore.signal()
+                }
+                
+                prevCoor = coor
+            }
+            
+            for _ in 0..<numToWait {
+                semaphore.wait()
+            }
+            
+            DispatchQueue.main.async {
+                self.distanceLeftLabel.text = String(format: "%.1f", Float(dist)) + " mi"
+            }
+        }
+            
+    }
+    
+    func displayPhotosFound() {
+        let numPhotos = self.currTour!.photos.count
+        var numFound = self.currPhotoIndex!
+        if self.finished {
+            numFound = numPhotos
+        }
+        
+        self.storiesFoundLabel.text = String(numFound) + " / " + String(numPhotos)
     }
     
     func displayDirectionsToCurrPhoto() {
