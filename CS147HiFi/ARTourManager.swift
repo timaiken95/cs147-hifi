@@ -86,8 +86,14 @@ class ARTourManager: NSObject {
         displayDistanceLeftInTour()
     }
     
+    var prevLoc = SCNVector3Zero
     func checkIfAdvance(loc:SCNVector3) {
         guard let pid = self.currPID else { return }
+        
+        if SCNVector3Distance(vectorStart: prevLoc, vectorEnd: loc) < 5 {
+            return
+        }
+        prevLoc = loc
         
         let photo:ARPhoto = self.manager.arPhotos[pid]!
         let dist = SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc)

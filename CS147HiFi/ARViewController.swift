@@ -229,7 +229,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     var previousTime:TimeInterval = 0
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-        if time - self.previousTime < 1 {
+        if time - self.previousTime < 5 {
             return
         }
         self.previousTime = time
