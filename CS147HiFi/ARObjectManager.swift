@@ -59,6 +59,10 @@ class ARObjectManager {
         arPhotos[pID]!.visible = true
     }
     
+    func setPhotoInvisible(pID:Int) {
+        arPhotos[pID]!.visible = false
+    }
+    
     func updateAllYs(newY:Float) {
         for photo in self.arPhotos.values {
             photo.updateY(newY: newY)

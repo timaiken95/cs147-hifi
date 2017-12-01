@@ -63,8 +63,12 @@ class ARTourManager: NSObject {
         self.currTour = self.arTours[tourID]
         self.currPhotoIndex = 0
         
-        for pID in self.arTours[tourID]!.photos {
-            self.manager.setPhotoVisible(pID: pID)
+        for pID in self.manager.arPhotos.keys {
+            if pID == self.arTours[tourID]!.photos[0] {
+                self.manager.setPhotoVisible(pID: pID)
+            } else {
+                self.manager.setPhotoInvisible(pID: pID)
+            }
         }
         
         displayDirectionsToCurrPhoto()

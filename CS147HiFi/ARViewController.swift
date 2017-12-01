@@ -17,6 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var photoInfoView: UIVisualEffectView!
     @IBOutlet weak var photoDescriptionBox: UITextView!
     @IBOutlet weak var photoTitleBox: UITextView!
+    @IBOutlet weak var photoImageBox: UIImageView!
     
     @IBOutlet weak var exploreModeTopButtonView: UIView!
     @IBOutlet weak var tourModeTopButtonView: UIView!
@@ -39,6 +40,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var cancelTourView: UIVisualEffectView!
     
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
+    
+    @IBOutlet weak var infoScreenView: UIVisualEffectView!
+    
+    @IBOutlet weak var infoScreenTitle1: UILabel!
+    @IBOutlet weak var infoScreenTitle2: UILabel!
+    @IBOutlet weak var infoScreenDescription1: UILabel!
+    @IBOutlet weak var infoScreenDescription2: UILabel!
     
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
@@ -159,6 +167,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.showMapButtonView.isHidden = true
         self.tourInfoWindow.isHidden = true
         self.cancelTourView.isHidden = true
+        self.infoScreenView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -263,6 +272,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 if let photo = m.getPhotoForNode(node: result.node) {
                     self.photoTitleBox.text = photo.title
                     self.photoDescriptionBox.text = photo.description
+                    self.photoImageBox.image = photo.imageFile
                     self.showPhotoInfo = true
                 }
             }
@@ -317,6 +327,25 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.tourModeTopButtonView.isHidden = true
         self.showMapButtonView.isHidden = false
         self.exploreModeTopButtonView.isHidden = false
+    }
+    
+    @IBAction func closeInfoScreen(_ sender: Any) {
+        self.infoScreenView.isHidden = true
+    }
+    
+    @IBAction func didClickInfoButton(_ sender: Any) {
+        if let _ = self.tourManager?.currTour {
+            self.infoScreenTitle1.text = "Tour-Mode"
+            self.infoScreenTitle2.text = "Tour-Mode"
+            self.infoScreenDescription1.text = "Follow the arrows to discover different stories."
+            self.infoScreenDescription2.text = "You can cancel at any time if you don't feel like continuing the tour. Just press the cancel button."
+        } else {
+            self.infoScreenTitle1.text = "Explore-Mode"
+            self.infoScreenTitle2.text = "Explore-Mode"
+            self.infoScreenDescription1.text = "You can move your phone and look for images floating in the air."
+            self.infoScreenDescription2.text = "If you don't see any images or arrows, check out the map to see where to find something!"
+        }
+        self.infoScreenView.isHidden = false
     }
     
     // MARK: - Location Callback
