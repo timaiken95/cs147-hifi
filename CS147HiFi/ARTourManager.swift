@@ -80,7 +80,7 @@ class ARTourManager: NSObject {
         return false
     }
     
-    func endTour(tourID:Int) {
+    func endTour() {
         
         for childNode in self.currDirectionsNode.childNodes {
             childNode.removeFromParentNode()

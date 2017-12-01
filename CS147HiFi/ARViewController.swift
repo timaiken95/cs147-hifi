@@ -36,6 +36,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var tourInfoWindowDescriptionField: UITextView!
     
     @IBOutlet weak var doneWithTourButton: UIView!
+    @IBOutlet weak var cancelTourView: UIVisualEffectView!
     
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
     
@@ -157,6 +158,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.startExploringButtonView.isHidden = true
         self.showMapButtonView.isHidden = true
         self.tourInfoWindow.isHidden = true
+        self.cancelTourView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -302,6 +304,20 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
     }
     
+    @IBAction func cancelTourButtonClicked(_ sender: Any) {
+        self.cancelTourView.isHidden = false
+    }
+    @IBAction func undoCancelTour(_ sender: Any) {
+        self.cancelTourView.isHidden = true
+    }
+    
+    @IBAction func confirmCancelTour(_ sender: Any) {
+        self.tourManager!.endTour()
+        self.cancelTourView.isHidden = true
+        self.tourModeTopButtonView.isHidden = true
+        self.showMapButtonView.isHidden = false
+        self.exploreModeTopButtonView.isHidden = false
+    }
     
     // MARK: - Location Callback
     
