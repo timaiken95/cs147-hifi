@@ -97,6 +97,7 @@ class ARTourManager: NSObject {
         
         let photo:ARPhoto = self.manager.arPhotos[pid]!
         let dist = SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc)
+        print(dist)
         
         if dist < 10 {
             if !self.advanceTour() {
@@ -115,7 +116,8 @@ class ARTourManager: NSObject {
     }
     
     func advanceTour() -> Bool {
-        if self.currPhotoIndex != nil && self.currPhotoIndex! < self.currTour!.photos.count {
+        print("Advancing to next step in tour")
+        if self.currPhotoIndex != nil && self.currPhotoIndex! < self.currTour!.photos.count - 1 {
             self.currPhotoIndex! += 1
             self.manager.setPhotoVisible(pID: self.currPID!)
             displayDirectionsToCurrPhoto()
@@ -138,6 +140,8 @@ class ARTourManager: NSObject {
     }
     
     func displayDistanceLeftInTour() {
+        
+        print("Updating distance for tour")
         
         guard let cidx = currPhotoIndex, let currLoc:CLLocation = locationManager.location, let t = currTour
             else { return }
@@ -200,6 +204,7 @@ class ARTourManager: NSObject {
     }
     
     func displayDirectionsToCurrPhoto() {
+        print("Fetching directions for route" )
         guard let currLoc:CLLocation = locationManager.location, let pid = self.currPID
             else { return }
         
@@ -223,6 +228,8 @@ class ARTourManager: NSObject {
     }
     
     func drawRoute(route:MKRoute) {
+        
+        print("Drawing route")
         
         let pointCount = route.polyline.pointCount
         var points = [CLLocationCoordinate2D](repeating:CLLocationCoordinate2D(), count:pointCount)
@@ -265,8 +272,9 @@ class ARTourManager: NSObject {
         guard let currLoc:CLLocation = locationManager.location
             else{ return}
         
-        let plane:SCNPlane = SCNPlane(width: 1, height: 1)
+        let plane:SCNPlane = SCNPlane(width: 1.5, height: 1.5)
         plane.firstMaterial!.diffuse.contents = #imageLiteral(resourceName: "Direction")
+        plane.firstMaterial!.emission.contents = #imageLiteral(resourceName: "Direction")
         plane.firstMaterial!.isDoubleSided = true
         
         let newNode = SCNNode(geometry: plane)

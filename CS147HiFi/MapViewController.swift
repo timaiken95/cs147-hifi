@@ -17,6 +17,12 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let coor:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.427498, longitude: -122.170265)
+        let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.027, longitudeDelta: 0.027)
+        let region:MKCoordinateRegion = MKCoordinateRegion(center: coor, span: span)
+        
+        mapView.setRegion(region, animated: false)
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
