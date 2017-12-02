@@ -99,7 +99,7 @@ class ARTourManager: NSObject {
         let dist = SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc)
         print(dist)
         
-        if dist < 10 {
+        if dist < 40 {
             if !self.advanceTour() {
                 self.finished = true
                 for childNode in self.currDirectionsNode.childNodes {
