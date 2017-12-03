@@ -16,11 +16,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     var photos:[Int:ARPhoto] = [:]
     var tours:[Int:ARTour] = [:]
+    @IBOutlet weak var alreadySeenView: UIVisualEffectView!
+    @IBOutlet weak var alreadySeenTitle: UILabel!
+    @IBOutlet weak var alreadySeenDistance: UILabel!
+    @IBOutlet weak var alreadySeenImage: UIImageView!
+    
+    @IBOutlet weak var notSeenView: UIVisualEffectView!
+    @IBOutlet weak var notSeenDistance: UILabel!
+    @IBOutlet weak var notSeenTitle: UILabel!
+    
+    @IBOutlet weak var tourInfoView: UIVisualEffectView!
+    
+    @IBOutlet weak var tourInfoTitle: UILabel!
+    @IBOutlet weak var tourInfoDistToStart: UILabel!
+    @IBOutlet weak var tourInfoEstimatedTime: UILabel!
+    
+    var locationManager:CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.mapView.delegate = self
+        self.tourInfoView.isHidden = true
+        self.alreadySeenView.isHidden = true
+        self.notSeenView.isHidden = true
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager!.requestWhenInUseAuthorization()
+        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager!.distanceFilter = 1 // meters
+        self.locationManager!.startUpdatingLocation()
         
         let coor:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.427498, longitude: -122.170265)
         let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.027, longitudeDelta: 0.027)
@@ -89,12 +114,52 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let info = view.annotation as! CustomPin
-        print(info.photo!.title)
+        guard let info = view.annotation as? CustomPin
+            else { return }
+        
+        if let p = info.photo {
+            let loc = p.location
+            let dist = locationManager!.location!.distance(from: loc) * 3.3 / 5280.0
+            
+            if UserDefaults.standard.object(forKey: "seen" + String(p.photoID)) as! Bool {
+                self.alreadySeenImage.image = p.imageFile
+                self.alreadySeenTitle.text = p.title
+                self.alreadySeenDistance.text = "Distance from current location: " + String(format: "%.1f", dist) + " mi"
+                self.alreadySeenView.isHidden = false
+            } else {
+                self.notSeenTitle.text = p.title
+                self.notSeenDistance.text = "Distance from current location: " + String(format: "%.1f", dist) + " mi"
+                self.notSeenView.isHidden = false
+            }
+        } else if let t = info.tour {
+            
+            let startPhoto = photos[t.photos[0]]!
+            let dist = locationManager!.location!.distance(from: startPhoto.location) * 3.3 / 5280.0
+            self.tourInfoTitle.text = t.title
+            self.tourInfoDistToStart.text = "Distance to start: " + String(format: "%.1f", dist) + " mi"
+            
+            let totalTime = Int(t.estimatedTime + dist * 30)
+            self.tourInfoEstimatedTime.text = "Estimated time: " + String(totalTime) + " min"
+            
+            self.tourInfoView.isHidden = false
+        }
+        
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func closeAlreadySeenView(_ sender: Any) {
+        self.alreadySeenView.isHidden = true
+    }
+    
+    @IBAction func closeNotSeenView(_ sender: Any) {
+        self.notSeenView.isHidden = true
+    }
+    
+    @IBAction func closeTourInfoView(_ sender: Any) {
+        self.tourInfoView.isHidden = true
     }
     
 }
