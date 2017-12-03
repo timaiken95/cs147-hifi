@@ -44,6 +44,8 @@ class ARPhoto {
         self.geometryNode = SCNNode()
         self.scale = s
         
+        UserDefaults.standard.set(false, forKey: "seen" + String(pID))
+        
         // set this last
         self.visible = true
         

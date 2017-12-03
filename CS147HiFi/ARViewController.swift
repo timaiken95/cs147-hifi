@@ -299,6 +299,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                     self.photoImageBox.image = photo.imageFile
                     self.showPhotoInfo = true
                     
+                    UserDefaults.standard.set(true, forKey: "seen" + String(photo.photoID))
+                    
                     if let pid = self.tourManager?.currPID, let _ = self.tourManager?.currTour {
                         if pid == photo.photoID {
                             if !self.tourManager!.advanceTour() {
