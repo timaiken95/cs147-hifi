@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             for dict in audioDicts {
                                 let id = dict["audioId"] as! Int
                                 let file = dict["file"] as! String
-                                let photo = dict["photo"] as! String
+                                let photo = dict["photo"] as! Int
                                 
                                 let audioEntry = ARAudio(aID: id, filename: file, photo: photo)
                                 self.audio.append(audioEntry)

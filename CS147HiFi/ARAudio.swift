@@ -12,11 +12,11 @@ import CoreLocation
 class ARAudio {
     let audioID: Int
     let audioFile: String
-    let audioPhoto: String
+    let photoID: Int
     
-    init(aID:Int, filename:String, photo:String) {
+    init(aID:Int, filename:String, photo:Int) {
         self.audioID = aID
         self.audioFile = filename
-        self.audioPhoto = photo
+        self.photoID = photo
     }
 }
