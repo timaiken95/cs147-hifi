@@ -89,6 +89,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(pinAnnotationView.annotation!)
         }
         
+        self.mapView.showsUserLocation = true
         
     }
     
