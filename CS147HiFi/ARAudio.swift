@@ -12,10 +12,7 @@ import CoreLocation
 class ARAudio {
     let audioID: Int
     let audioFile: String
-    let title: String
-    let description: String
-    let location: CLLocation
-    let tours: [Int]
+    let audioPhoto: String
     
     var visible: Bool
 //    var visible:Bool {
@@ -32,13 +29,10 @@ class ARAudio {
 //        }
 //    }
     
-    init(aID:Int, filename:String, t: String, d: String, lat: Float, long: Float, ts:[Int]) {
+    init(aID:Int, filename:String, photo:String) {
         self.audioID = aID
         self.audioFile = filename
-        self.title = t
-        self.description = d
-        self.location = CLLocation(latitude: Double(lat), longitude: Double(long))
-        self.tours = ts
+        self.audioPhoto = photo
         
         if let _ = UserDefaults.standard.object(forKey: "seen" + String(aID)) as? Bool {
             print("it worked")

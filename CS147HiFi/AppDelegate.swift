@@ -49,13 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             for dict in audioDicts {
                                 let id = dict["audioId"] as! Int
                                 let file = dict["file"] as! String
-                                let title = dict["title"] as! String
-                                let description = dict["description"] as! String
-                                let lat = dict["lat"] as! Float
-                                let long = dict["long"] as! Float
-                                let tours = dict["tours"] as! [Int]
+                                let photo = dict["photo"] as! String
                                 
-                                let audioEntry = ARAudio(aID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours)
+                                let audioEntry = ARAudio(aID: id, filename: file, photo: photo)
                                 self.audio.append(audioEntry)
                             }
                         }
