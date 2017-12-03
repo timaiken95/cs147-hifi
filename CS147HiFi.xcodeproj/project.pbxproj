@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1114FCB01FD3CE31009C74D5 /* AppContent_TimTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 1114FCAF1FD3CE30009C74D5 /* AppContent_TimTest.json */; };
 		11A36C051FC8A80700C51692 /* ARTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A36C041FC8A80700C51692 /* ARTour.swift */; };
 		11A36C071FC8A9A600C51692 /* ARTourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A36C061FC8A9A600C51692 /* ARTourManager.swift */; };
 		11A3C2021FD22A9700A1FE6F /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3C2011FD22A9700A1FE6F /* CustomPin.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1114FCAF1FD3CE30009C74D5 /* AppContent_TimTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppContent_TimTest.json; sourceTree = "<group>"; };
 		11A36C041FC8A80700C51692 /* ARTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTour.swift; sourceTree = "<group>"; };
 		11A36C061FC8A9A600C51692 /* ARTourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTourManager.swift; sourceTree = "<group>"; };
 		11A3C2011FD22A9700A1FE6F /* CustomPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		11C1C8B41FC48D5300F598D8 = {
 			isa = PBXGroup;
 			children = (
+				1114FCAF1FD3CE30009C74D5 /* AppContent_TimTest.json */,
 				11FFF4EF1FCE399E00A34A6D /* AppContent.json */,
 				11FFF4EE1FCE343600A34A6D /* Fonts */,
 				11C1C8BF1FC48D5300F598D8 /* CS147HiFi */,
@@ -289,6 +292,7 @@
 				11FFF4EA1FCE2A3A00A34A6D /* Comfortaa-Regular.ttf in Resources */,
 				11FFF4F01FCE399E00A34A6D /* AppContent.json in Resources */,
 				11FFF4ED1FCE341F00A34A6D /* PoiretOne-Regular.ttf in Resources */,
+				1114FCB01FD3CE31009C74D5 /* AppContent_TimTest.json in Resources */,
 				11FFF4E91FCE2A3800A34A6D /* Comfortaa-Light.ttf in Resources */,
 				11FFF4E81FCE2A3600A34A6D /* Comfortaa-Bold.ttf in Resources */,
 				11C1C8C81FC48D5300F598D8 /* Main.storyboard in Resources */,

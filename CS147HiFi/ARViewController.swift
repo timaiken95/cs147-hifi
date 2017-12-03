@@ -41,6 +41,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var tourDistanceLeftLabel: UILabel!
     @IBOutlet weak var tourStoriesFoundLabel: UILabel!
+    @IBOutlet weak var cancelTourSmallButtonView: UIView!
     
     @IBOutlet weak var showMapButtonView: UIVisualEffectView!
     
@@ -247,12 +248,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         guard let tm = self.tourManager, let _ = tm.currTour else { return }
         
         let currLocation:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43)
-        tm.checkIfAdvance(loc: currLocation)
-        
-        if tm.finished {
-            self.doneWithTourButton.isHidden = false
-        }
-        
         if tm.currTour == nil {
             self.objectManager!.updateVisible(loc: currLocation)
         }
@@ -303,6 +298,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                     self.photoDescriptionBox.text = photo.description
                     self.photoImageBox.image = photo.imageFile
                     self.showPhotoInfo = true
+                    
+                    if let pid = self.tourManager?.currPID, let _ = self.tourManager?.currTour {
+                        if pid == photo.photoID {
+                            if !self.tourManager!.advanceTour() {
+                                self.doneWithTourButton.isHidden = false
+                                self.cancelTourSmallButtonView.isHidden = true
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -348,6 +352,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.tourModeTopButtonView.isHidden = true
         self.showMapButtonView.isHidden = false
         self.exploreModeTopButtonView.isHidden = false
+        self.doneWithTourButton.isHidden = true
+        self.cancelTourSmallButtonView.isHidden = false
     }
     
     @IBAction func cancelTourButtonClicked(_ sender: Any) {

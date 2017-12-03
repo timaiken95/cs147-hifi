@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.global(qos: .background).async {
         
             do {
-                if let file = Bundle.main.url(forResource: "AppContent", withExtension: "json") {
+                if let file = Bundle.main.url(forResource: "AppContent_TimTest", withExtension: "json") {
                     let data = try Data(contentsOf: file)
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     if let object = json as? [String: Any] {

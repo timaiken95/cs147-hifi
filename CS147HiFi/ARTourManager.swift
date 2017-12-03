@@ -86,6 +86,7 @@ class ARTourManager: NSObject {
         displayDistanceLeftInTour()
     }
     
+    /*
     var prevLoc = SCNVector3Zero
     func checkIfAdvance(loc:SCNVector3) {
         guard let pid = self.currPID else { return }
@@ -113,7 +114,7 @@ class ARTourManager: NSObject {
         
         displayDistanceLeftInTour()
         
-    }
+    }*/
     
     func advanceTour() -> Bool {
         print("Advancing to next step in tour")
@@ -121,7 +122,15 @@ class ARTourManager: NSObject {
             self.currPhotoIndex! += 1
             self.manager.setPhotoVisible(pID: self.currPID!)
             displayDirectionsToCurrPhoto()
+            displayPhotosFound()
             return true
+            
+        } else {
+            self.finished = true
+            for childNode in self.currDirectionsNode.childNodes {
+                childNode.removeFromParentNode()
+            }
+            displayPhotosFound()
         }
         
         return false

@@ -204,80 +204,9 @@
                                     <constraint firstAttribute="bottom" secondItem="EUA-Kv-lXP" secondAttribute="bottom" id="ycS-iy-yLV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-cv-LBs">
-                                <rect key="frame" x="325" y="130" width="30" height="30"/>
-                                <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn2-bT-c8M">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oSc-oi-X9v">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUH-P6-lgu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                    <state key="normal" image="info"/>
-                                                    <connections>
-                                                        <action selector="didClickInfoButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SSk-cS-ITR"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="DUH-P6-lgu" secondAttribute="bottom" id="6C0-bQ-My4"/>
-                                                <constraint firstAttribute="trailing" secondItem="DUH-P6-lgu" secondAttribute="trailing" id="Csh-fg-pWV"/>
-                                                <constraint firstItem="DUH-P6-lgu" firstAttribute="leading" secondItem="oSc-oi-X9v" secondAttribute="leading" id="sWb-4D-Ldu"/>
-                                                <constraint firstItem="DUH-P6-lgu" firstAttribute="top" secondItem="oSc-oi-X9v" secondAttribute="top" id="yNx-wo-jp3"/>
-                                            </constraints>
-                                        </view>
-                                        <blurEffect style="light"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </visualEffectView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="jn2-bT-c8M" firstAttribute="leading" secondItem="J7u-cv-LBs" secondAttribute="leading" id="BFn-jJ-TDb"/>
-                                    <constraint firstAttribute="height" constant="30" id="Di7-Xv-9dU"/>
-                                    <constraint firstAttribute="width" constant="30" id="H3w-M2-iQQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="jn2-bT-c8M" secondAttribute="trailing" id="Mzr-dc-CvY"/>
-                                    <constraint firstAttribute="bottom" secondItem="jn2-bT-c8M" secondAttribute="bottom" id="QHN-6h-4Ks"/>
-                                    <constraint firstItem="jn2-bT-c8M" firstAttribute="top" secondItem="J7u-cv-LBs" secondAttribute="top" id="XAY-hD-Inc"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xoD-t5-ehF">
                                 <rect key="frame" x="5" y="40" width="365" height="100"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-c6-4bp">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="65"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJp-V8-6K8">
-                                                <rect key="frame" x="0.0" y="0.0" width="110" height="65"/>
-                                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
-                                                <state key="normal" title="Done">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="doneWithTourButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="FCy-BI-22C"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.67450980392156867" green="0.96078431372549022" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="rJp-V8-6K8" secondAttribute="bottom" id="2FA-qg-qfx"/>
-                                            <constraint firstAttribute="width" constant="110" id="5f1-fr-geo"/>
-                                            <constraint firstItem="rJp-V8-6K8" firstAttribute="top" secondItem="Bic-c6-4bp" secondAttribute="top" id="Ufl-Mu-kGj"/>
-                                            <constraint firstItem="rJp-V8-6K8" firstAttribute="leading" secondItem="Bic-c6-4bp" secondAttribute="leading" id="b8x-5k-0sN"/>
-                                            <constraint firstAttribute="trailing" secondItem="rJp-V8-6K8" secondAttribute="trailing" id="hC7-YR-UyG"/>
-                                            <constraint firstAttribute="height" constant="65" id="hKL-Si-NGC"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRu-ag-AVR">
                                         <rect key="frame" x="125" y="0.0" width="115" height="35"/>
                                         <subviews>
@@ -452,6 +381,35 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-c6-4bp">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="80"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJp-V8-6K8">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="80"/>
+                                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="doneWithTourButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="FCy-BI-22C"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.67450980392156867" green="0.96078431372549022" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rJp-V8-6K8" secondAttribute="bottom" id="2FA-qg-qfx"/>
+                                            <constraint firstAttribute="width" constant="110" id="5f1-fr-geo"/>
+                                            <constraint firstItem="rJp-V8-6K8" firstAttribute="top" secondItem="Bic-c6-4bp" secondAttribute="top" id="Ufl-Mu-kGj"/>
+                                            <constraint firstItem="rJp-V8-6K8" firstAttribute="leading" secondItem="Bic-c6-4bp" secondAttribute="leading" id="b8x-5k-0sN"/>
+                                            <constraint firstAttribute="trailing" secondItem="rJp-V8-6K8" secondAttribute="trailing" id="hC7-YR-UyG"/>
+                                            <constraint firstAttribute="height" constant="80" id="hKL-Si-NGC"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -469,6 +427,48 @@
                                     <constraint firstItem="UyT-uB-2xu" firstAttribute="top" secondItem="xoD-t5-ehF" secondAttribute="top" id="eVz-So-cOn"/>
                                     <constraint firstItem="Bic-c6-4bp" firstAttribute="leading" secondItem="xoD-t5-ehF" secondAttribute="leading" id="j6w-Kh-6IO"/>
                                     <constraint firstItem="x3K-IB-KHQ" firstAttribute="top" secondItem="xoD-t5-ehF" secondAttribute="top" id="suq-kn-SpY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7u-cv-LBs">
+                                <rect key="frame" x="325" y="130" width="30" height="30"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jn2-bT-c8M">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oSc-oi-X9v">
+                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUH-P6-lgu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <state key="normal" image="info"/>
+                                                    <connections>
+                                                        <action selector="didClickInfoButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SSk-cS-ITR"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="DUH-P6-lgu" secondAttribute="bottom" id="6C0-bQ-My4"/>
+                                                <constraint firstAttribute="trailing" secondItem="DUH-P6-lgu" secondAttribute="trailing" id="Csh-fg-pWV"/>
+                                                <constraint firstItem="DUH-P6-lgu" firstAttribute="leading" secondItem="oSc-oi-X9v" secondAttribute="leading" id="sWb-4D-Ldu"/>
+                                                <constraint firstItem="DUH-P6-lgu" firstAttribute="top" secondItem="oSc-oi-X9v" secondAttribute="top" id="yNx-wo-jp3"/>
+                                            </constraints>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jn2-bT-c8M" firstAttribute="leading" secondItem="J7u-cv-LBs" secondAttribute="leading" id="BFn-jJ-TDb"/>
+                                    <constraint firstAttribute="height" constant="30" id="Di7-Xv-9dU"/>
+                                    <constraint firstAttribute="width" constant="30" id="H3w-M2-iQQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jn2-bT-c8M" secondAttribute="trailing" id="Mzr-dc-CvY"/>
+                                    <constraint firstAttribute="bottom" secondItem="jn2-bT-c8M" secondAttribute="bottom" id="QHN-6h-4Ks"/>
+                                    <constraint firstItem="jn2-bT-c8M" firstAttribute="top" secondItem="J7u-cv-LBs" secondAttribute="top" id="XAY-hD-Inc"/>
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDb-ui-aIn">
@@ -593,7 +593,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ha2-iO-3qT">
-                                            <rect key="frame" x="10" y="94.5" width="355" height="497.5"/>
+                                            <rect key="frame" x="10" y="93" width="355" height="499"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="tourCell" id="8g0-Uk-ig6" customClass="TourTableCell" customModule="CS147HiFi" customModuleProvider="target">
@@ -668,7 +668,7 @@
                                             </connections>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1y-2J-sxf">
-                                            <rect key="frame" x="10" y="50" width="355" height="35"/>
+                                            <rect key="frame" x="10" y="50" width="355" height="33.5"/>
                                             <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -944,12 +944,12 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="TITLE" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4I-iD-IdX">
-                                            <rect key="frame" x="5" y="10" width="315" height="49.5"/>
+                                            <rect key="frame" x="5" y="10" width="315" height="47.5"/>
                                             <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="28"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlC-HT-ylr">
-                                            <rect key="frame" x="40" y="74.5" width="245" height="135"/>
+                                            <rect key="frame" x="40" y="72.5" width="245" height="135"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-VB-rm8">
                                                     <rect key="frame" x="0.0" y="0.0" width="245" height="135"/>
@@ -965,7 +965,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfx-kb-W53">
-                                            <rect key="frame" x="5" y="234.5" width="315" height="257.5"/>
+                                            <rect key="frame" x="5" y="232.5" width="315" height="259.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -1060,6 +1060,7 @@
                         <viewLayoutGuide key="safeArea" id="Odq-Nz-7rp"/>
                     </view>
                     <connections>
+                        <outlet property="cancelTourSmallButtonView" destination="QJV-oE-6Fs" id="b6y-sh-VTC"/>
                         <outlet property="cancelTourView" destination="NDb-ui-aIn" id="0o1-6B-nV5"/>
                         <outlet property="doneWithTourButton" destination="Bic-c6-4bp" id="gKl-wm-SM4"/>
                         <outlet property="exploreModeTopButtonView" destination="zSh-BM-SfF" id="26V-KS-2YE"/>
