@@ -44,7 +44,11 @@ class ARPhoto {
         self.geometryNode = SCNNode()
         self.scale = s
         
-        UserDefaults.standard.set(false, forKey: "seen" + String(pID))
+        if let _ = UserDefaults.standard.object(forKey: "seen" + String(pID)) as? Bool {
+            print("it worked")
+        } else {
+            UserDefaults.standard.set(false, forKey: "seen" + String(pID))
+        }
         
         // set this last
         self.visible = true
