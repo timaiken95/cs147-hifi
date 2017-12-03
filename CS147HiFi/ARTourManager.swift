@@ -160,18 +160,25 @@ class ARTourManager: NSObject {
             var mutex:pthread_mutex_t = pthread_mutex_t()
             let numToWait:Int = t.photos.count - cidx
             
-            var locs:[CLLocationCoordinate2D] = []
+            var locs:[CLLocation] = []
             for i in cidx..<t.photos.count {
-                locs.append(self.manager.arPhotos[t.photos[i]]!.location.coordinate)
+                locs.append(self.manager.arPhotos[t.photos[i]]!.location)
             }
             
             var dist:Double = 0
             
-            var prevCoor:CLLocationCoordinate2D = currLoc.coordinate
+            var prevCoor:CLLocation = currLoc
             for coor in locs {
                 
-                let start:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: prevCoor))
-                let end:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: coor))
+                let crowDist = coor.distance(from: prevCoor) * 3.3 / 5280
+                if crowDist < 0.3 {
+                    dist += crowDist
+                    semaphore.signal()
+                    continue
+                }
+                
+                let start:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: prevCoor.coordinate))
+                let end:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: coor.coordinate))
                 
                 let request:MKDirectionsRequest = MKDirectionsRequest()
                 request.source = start
