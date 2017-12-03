@@ -69,6 +69,20 @@ class ARObjectManager {
         }
     }
     
+    var prevLoc:SCNVector3 = SCNVector3Zero
+    func updateVisible(loc:SCNVector3) {
+        
+        if SCNVector3Distance(vectorStart: loc, vectorEnd: prevLoc) > 5 {
+            self.prevLoc = loc
+            
+            for photo in self.arPhotos.values {
+                if SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc) < 100 {
+                    setPhotoVisible(pID: photo.photoID)
+                }
+            }
+        }
+    }
+    
      // https://developer.apple.com/documentation/arkit/arconfiguration.worldalignment/2873776-gravityandheading
     class func getARPosition(currLocCLL:CLLocation, currLocAR:SCNVector3, objectLocCLL:CLLocation) -> SCNVector3 {
         

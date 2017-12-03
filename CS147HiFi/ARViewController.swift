@@ -253,6 +253,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             self.doneWithTourButton.isHidden = false
         }
         
+        if tm.currTour == nil {
+            self.objectManager!.updateVisible(loc: currLocation)
+        }
+        
     }
 
     /*
