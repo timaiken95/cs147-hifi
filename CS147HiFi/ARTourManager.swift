@@ -169,6 +169,7 @@ class ARTourManager: NSObject {
             
             var prevCoor:CLLocationCoordinate2D = currLoc.coordinate
             for coor in locs {
+                
                 let start:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: prevCoor))
                 let end:MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: coor))
                 

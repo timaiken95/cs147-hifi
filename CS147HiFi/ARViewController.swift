@@ -16,7 +16,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var photoInfoView: UIVisualEffectView!
     @IBOutlet weak var photoDescriptionBox: UITextView!
-    @IBOutlet weak var photoTitleBox: UITextView!
+    @IBOutlet weak var photoTitleBox: UILabel!
     @IBOutlet weak var photoImageBox: UIImageView!
     
     @IBOutlet weak var exploreModeTopButtonView: UIView!
