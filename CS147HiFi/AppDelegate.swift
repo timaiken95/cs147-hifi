@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var photos:[ARPhoto] = []
+    var audio:[ARAudio] = []
     var tours:[ARTour] = []
     var dataInitialized:Bool = false
     
@@ -41,6 +42,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 
                                 let photoEntry = ARPhoto(pID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours, s: 1)
                                 self.photos.append(photoEntry)
+                            }
+                        }
+                        
+                        if let audioDicts = object["audio"] as? [[String:Any]] {
+                            for dict in audioDicts {
+                                let id = dict["audioId"] as! Int
+                                let file = dict["file"] as! String
+                                let title = dict["title"] as! String
+                                let description = dict["description"] as! String
+                                let lat = dict["lat"] as! Float
+                                let long = dict["long"] as! Float
+                                let tours = dict["tours"] as! [Int]
+                                
+                                let audioEntry = ARAudio(aID: id, filename: file, t: title, d: description, lat: lat, long: long, ts: tours)
+                                self.audio.append(audioEntry)
                             }
                         }
                         

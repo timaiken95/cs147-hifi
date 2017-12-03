@@ -16,6 +16,10 @@ class AppData {
             objectManager.addARItem(newPhoto: photo)
         }
         
+//        for audio in appDelegate.audio {
+//            // add audio option to ObjectManager
+//        }
+        
         for tour in appDelegate.tours {
             tourManager.addARTour(newTour: tour)
         }

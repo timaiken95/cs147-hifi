@@ -30,6 +30,7 @@
 		11FFF4ED1FCE341F00A34A6D /* PoiretOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4EC1FCE341700A34A6D /* PoiretOne-Regular.ttf */; };
 		11FFF4F01FCE399E00A34A6D /* AppContent.json in Resources */ = {isa = PBXBuildFile; fileRef = 11FFF4EF1FCE399E00A34A6D /* AppContent.json */; };
 		11FFF4F21FD0AF5A00A34A6D /* TourTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FFF4F11FD0AF5A00A34A6D /* TourTableCell.swift */; };
+		29A41C421FD3F7FA007AC032 /* ARAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A41C411FD3F7FA007AC032 /* ARAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		11FFF4EC1FCE341700A34A6D /* PoiretOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoiretOne-Regular.ttf"; sourceTree = "<group>"; };
 		11FFF4EF1FCE399E00A34A6D /* AppContent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppContent.json; sourceTree = "<group>"; };
 		11FFF4F11FD0AF5A00A34A6D /* TourTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourTableCell.swift; sourceTree = "<group>"; };
+		29A41C411FD3F7FA007AC032 /* ARAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				11C1C8F01FC4C65800F598D8 /* ARObjectManager.swift */,
 				11A36C061FC8A9A600C51692 /* ARTourManager.swift */,
 				11C1C8F41FC5D14D00F598D8 /* ARPhoto.swift */,
+				29A41C411FD3F7FA007AC032 /* ARAudio.swift */,
 				11A36C041FC8A80700C51692 /* ARTour.swift */,
 				11C1C8F21FC4CE4200F598D8 /* SCNVector3Extensions.swift */,
 				11C1C8C61FC48D5300F598D8 /* Main.storyboard */,
@@ -329,6 +332,7 @@
 				11A36C051FC8A80700C51692 /* ARTour.swift in Sources */,
 				11FFF4F21FD0AF5A00A34A6D /* TourTableCell.swift in Sources */,
 				11C1C8C51FC48D5300F598D8 /* ARViewController.swift in Sources */,
+				29A41C421FD3F7FA007AC032 /* ARAudio.swift in Sources */,
 				11C1C8C11FC48D5300F598D8 /* AppDelegate.swift in Sources */,
 				11C1C8F31FC4CE4200F598D8 /* SCNVector3Extensions.swift in Sources */,
 			);
