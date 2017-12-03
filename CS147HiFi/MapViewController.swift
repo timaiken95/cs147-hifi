@@ -60,6 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let pointAnnotation = CustomPin(location: loc, pinImageStr: "pin_tour.png", t: tour, p: nil)
             let pinAnnotationView:MKPinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "pin")
+            pinAnnotationView.canShowCallout = false;
             mapView.addAnnotation(pinAnnotationView.annotation!)
         }
         
@@ -76,7 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            annotationView?.canShowCallout = true
+            annotationView?.canShowCallout = false
         } else {
             annotationView?.annotation = annotation
         }
@@ -85,6 +86,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotationView?.image = UIImage(named: customPointAnnotation.pinImageName)
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let info = view.annotation as! CustomPin
+        print(info.photo!.title)
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
