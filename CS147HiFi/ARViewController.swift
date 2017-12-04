@@ -243,8 +243,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 let (left, right) = pm.shouldDisplayArrows(nodes: nodes, pov: renderer.pointOfView!.worldFront)
                 
                 DispatchQueue.main.async {
-                    self.leftArrowView.isHidden = !left
-                    self.rightArrowView.isHidden = !right
+                    if self.startScreenView.isHidden {
+                        self.leftArrowView.isHidden = !left
+                        self.rightArrowView.isHidden = !right
+                    } else {
+                        self.leftArrowView.isHidden = true
+                        self.rightArrowView.isHidden = true
+                    }
                 }
             }
         }
