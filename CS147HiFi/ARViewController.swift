@@ -238,9 +238,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         if time - self.previousTimeShort >= 0.1 {
             self.previousTimeShort = time
-            if self.arInitialized, self.dataReady, let pm = self.objectManager, self.tour == nil {
+            if self.arInitialized, self.dataReady, let pm = self.objectManager {
                 let nodes = self.sceneView!.nodesInsideFrustum(of: renderer.pointOfView!)
-                let (left, right) = pm.shouldDisplayArrows(nodes: nodes, pov: renderer.pointOfView!.worldFront)
+                let (left, right) = pm.shouldDisplayArrows(nodes: nodes,
+                                                           pov: renderer.pointOfView!.worldFront,
+                                                           pid: self.tourManager!.currPID)
                 
                 DispatchQueue.main.async {
                     if self.startScreenView.isHidden {

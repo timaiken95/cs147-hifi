@@ -83,13 +83,20 @@ class ARObjectManager {
         }
     }
     
-    func shouldDisplayArrows(nodes:[SCNNode], pov:SCNVector3) -> (Bool, Bool) {
+    func shouldDisplayArrows(nodes:[SCNNode], pov:SCNVector3, pid:Int?) -> (Bool, Bool) {
         guard let currLoc:CLLocation = locationManager.location else { return (false, false)}
         
         var left = false
         var right = false
         
         for photo in self.arPhotos.values {
+            
+            if let p = pid {
+                if photo.photoID != p {
+                    continue
+                }
+            }
+            
             if !photo.geometryNode.isHidden {
                 if !nodes.contains(photo.geometryNode) {
                     if currLoc.distance(from: photo.location) < 50 {
