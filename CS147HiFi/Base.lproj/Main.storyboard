@@ -1551,7 +1551,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="X_Button_Gray" width="96" height="96"/>
+        <image name="X_Button_Gray" width="72" height="72"/>
         <image name="X_Button_White" width="75" height="75"/>
         <image name="backButton" width="43" height="36"/>
         <image name="info" width="44" height="44"/>

@@ -118,19 +118,21 @@ class ARTourManager: NSObject {
     
     func advanceTour() -> Bool {
         print("Advancing to next step in tour")
-        if self.currPhotoIndex != nil && self.currPhotoIndex! < self.currTour!.photos.count - 1 {
-            self.currPhotoIndex! += 1
-            self.manager.setPhotoVisible(pID: self.currPID!)
-            displayDirectionsToCurrPhoto()
-            displayPhotosFound()
-            return true
-            
-        } else {
-            self.finished = true
-            for childNode in self.currDirectionsNode.childNodes {
-                childNode.removeFromParentNode()
+        if self.currPhotoIndex != nil {
+            if self.currPhotoIndex! < self.currTour!.photos.count - 1 {
+                self.currPhotoIndex! += 1
+                self.manager.setPhotoVisible(pID: self.currPID!)
+                displayDirectionsToCurrPhoto()
+                displayPhotosFound()
+                return true
+                
+            } else {
+                self.finished = true
+                for childNode in self.currDirectionsNode.childNodes {
+                    childNode.removeFromParentNode()
+                }
+                displayPhotosFound()
             }
-            displayPhotosFound()
         }
         
         return false
@@ -238,13 +240,13 @@ class ARTourManager: NSObject {
         let directions = MKDirections(request: request)
         directions.calculate { (response: MKDirectionsResponse?, error: Error?) in
             if let r = response?.routes[0] {
-                self.drawRoute(route: r)
+                self.drawRoute(route: r, startLoc: currLoc, endLoc: self.manager.arPhotos[pid]!.location)
             }
         }
         
     }
     
-    func drawRoute(route:MKRoute) {
+    func drawRoute(route:MKRoute, startLoc:CLLocation, endLoc:CLLocation) {
         
         print("Drawing route")
         
@@ -256,28 +258,38 @@ class ARTourManager: NSObject {
             childNode.removeFromParentNode()
         }
         
-        guard let startCoor:CLLocation = locationManager.location
-            else { return }
+        if startLoc.distance(from: CLLocation(latitude: points[0].latitude, longitude: points[0].longitude)) > 5 {
+            points.insert(startLoc.coordinate, at: 0)
+        }
         
-        var prevCoor:CLLocation = startCoor
-        for coor in points {
+        if endLoc.distance(from: CLLocation(latitude: points.last!.latitude, longitude: points.last!.longitude)) > 5 {
+            points.append(endLoc.coordinate)
+        }
+        
+        
+        var prevCoor:CLLocation = CLLocation(latitude: points[0].latitude, longitude: points[0].longitude)
+        for c in 1..<points.count {
             
-            let direction = (coor.latitude - startCoor.coordinate.latitude,
-                             coor.longitude - startCoor.coordinate.longitude)
+            let coor = points[c]
+            
+            let direction = (coor.latitude - prevCoor.coordinate.latitude,
+                             coor.longitude - prevCoor.coordinate.longitude)
             let rotate = Float(atan2(direction.0, direction.1)) + .pi/2
         
             let currCoor = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
             drawNodeOnRoute(loc: currCoor, dir: rotate)
             
             let dist = prevCoor.distance(from: currCoor)
-            let divide = Int(ceil(dist / 10.0))
+            let divide = Int(ceil(dist / 5.0)) + 1
+            print(divide)
             let deltaLat = (currCoor.coordinate.latitude - prevCoor.coordinate.latitude) / Double(divide)
             let deltaLong = (currCoor.coordinate.longitude - prevCoor.coordinate.longitude) / Double(divide)
             
-            for i in 1..<divide {
+            for i in 0..<divide {
+                print(i)
                 let partialCoor = CLLocation(latitude: prevCoor.coordinate.latitude + deltaLat * Double(i),
                                              longitude: prevCoor.coordinate.longitude + deltaLong * Double(i))
-                
+                print(partialCoor.coordinate)
                 drawNodeOnRoute(loc: partialCoor, dir: rotate)
             }
             
