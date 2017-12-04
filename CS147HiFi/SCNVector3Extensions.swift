@@ -222,6 +222,19 @@ func SCNVector3Lerp(vectorStart: SCNVector3, vectorEnd: SCNVector3, t: Float) ->
     return SCNVector3Make(vectorStart.x + ((vectorEnd.x - vectorStart.x) * t), vectorStart.y + ((vectorEnd.y - vectorStart.y) * t), vectorStart.z + ((vectorEnd.z - vectorStart.z) * t))
 }
 
+// assumes rotating around the y axis
+func SCNVector3Angle(vector1: SCNVector3, vector2:SCNVector3) -> Float {
+    let vector1Norm = vector1.normalized()
+    let vector2Norm = vector2.normalized()
+    
+    var angle = atan2(vector2Norm.z, vector2Norm.x) - atan2(vector1Norm.z, vector1Norm.x)
+    if angle < 0 {
+        angle += 2 * .pi
+    }
+    
+    return angle
+}
+
 /**
  * Project the vector, vectorToProject, onto the vector, projectionVector.
  */

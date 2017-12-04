@@ -83,6 +83,30 @@ class ARObjectManager {
         }
     }
     
+    func shouldDisplayArrows(nodes:[SCNNode], pov:SCNVector3) -> (Bool, Bool) {
+        guard let currLoc:CLLocation = locationManager.location else { return (false, false)}
+        
+        var left = false
+        var right = false
+        
+        for photo in self.arPhotos.values {
+            if !photo.geometryNode.isHidden {
+                if !nodes.contains(photo.geometryNode) {
+                    if currLoc.distance(from: photo.location) < 50 {
+                        let vecToPhoto = photo.geometryNode.position -  self.getARLocation()
+                        if SCNVector3Angle(vector1: vecToPhoto, vector2: pov) > .pi {
+                            right = true
+                        } else {
+                            left = true
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (left, right)
+    }
+    
      // https://developer.apple.com/documentation/arkit/arconfiguration.worldalignment/2873776-gravityandheading
     class func getARPosition(currLocCLL:CLLocation, currLocAR:SCNVector3, objectLocCLL:CLLocation) -> SCNVector3 {
         

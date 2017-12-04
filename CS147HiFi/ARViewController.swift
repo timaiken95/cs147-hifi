@@ -52,6 +52,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var infoScreenDescription1: UILabel!
     @IBOutlet weak var infoScreenDescription2: UILabel!
     
+    @IBOutlet weak var leftArrowView: UIView!
+    @IBOutlet weak var rightArrowView: UIView!
+    
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
     var locationManager:CLLocationManager?
@@ -177,6 +180,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.tourInfoWindow.isHidden = true
         self.cancelTourView.isHidden = true
         self.infoScreenView.isHidden = true
+        self.leftArrowView.isHidden = true
+        self.rightArrowView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -228,7 +233,21 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     }
     
     var previousTime:TimeInterval = 0
+    var previousTimeShort:TimeInterval = 0
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        
+        if time - self.previousTimeShort >= 0.1 {
+            self.previousTimeShort = time
+            if self.arInitialized, self.dataReady, let pm = self.objectManager, self.tour == nil {
+                let nodes = self.sceneView!.nodesInsideFrustum(of: renderer.pointOfView!)
+                let (left, right) = pm.shouldDisplayArrows(nodes: nodes, pov: renderer.pointOfView!.worldFront)
+                
+                DispatchQueue.main.async {
+                    self.leftArrowView.isHidden = !left
+                    self.rightArrowView.isHidden = !right
+                }
+            }
+        }
         
         if time - self.previousTime < 5 {
             return
