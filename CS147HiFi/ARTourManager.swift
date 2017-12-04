@@ -280,7 +280,7 @@ class ARTourManager: NSObject {
             drawNodeOnRoute(loc: currCoor, dir: rotate)
             
             let dist = prevCoor.distance(from: currCoor)
-            let divide = Int(ceil(dist / 5.0)) + 1
+            let divide = Int(ceil(dist / 5.0))
             print(divide)
             let deltaLat = (currCoor.coordinate.latitude - prevCoor.coordinate.latitude) / Double(divide)
             let deltaLong = (currCoor.coordinate.longitude - prevCoor.coordinate.longitude) / Double(divide)
