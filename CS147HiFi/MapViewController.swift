@@ -68,7 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if shouldContinue { continue }
             
             if UserDefaults.standard.object(forKey: "seen" + String(photo.photoID)) as! Bool {
-                let pointAnnotation = CustomPin(location: photo.location.coordinate, pinImageStr: "pin_item_found_symbol", t: nil, p: photo)
+                let pointAnnotation = CustomPin(location: photo.location.coordinate, pinImageStr: "pin_item_found.png", t: nil, p: photo)
                 let pinAnnotationView:MKPinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "pin")
                 mapView.addAnnotation(pinAnnotationView.annotation!)
             } else {

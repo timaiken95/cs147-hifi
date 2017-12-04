@@ -296,6 +296,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 if let photo = m.getPhotoForNode(node: result.node) {
                     self.photoTitleBox.text = photo.title
                     self.photoDescriptionBox.text = photo.description
+                    self.photoDescriptionBox.scrollRangeToVisible(NSMakeRange(0, 10))
                     self.photoImageBox.image = photo.imageFile
                     self.showPhotoInfo = true
                     
