@@ -593,7 +593,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ha2-iO-3qT">
-                                            <rect key="frame" x="10" y="93" width="355" height="499"/>
+                                            <rect key="frame" x="10" y="94.5" width="355" height="497.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="tourCell" id="8g0-Uk-ig6" customClass="TourTableCell" customModule="CS147HiFi" customModuleProvider="target">
@@ -668,7 +668,7 @@
                                             </connections>
                                         </tableView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1y-2J-sxf">
-                                            <rect key="frame" x="10" y="50" width="355" height="33.5"/>
+                                            <rect key="frame" x="10" y="50" width="355" height="35"/>
                                             <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

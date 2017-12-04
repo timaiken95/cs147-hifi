@@ -463,9 +463,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         let firstPhotoLocation = self.objectManager!.arPhotos[self.tour!.photos[0]]!.location
         let distanceToFirstPhoto = locationManager!.location!.distance(from: firstPhotoLocation) * 3.3 / 5280.0
-        let totalTime = self.tour!.estimatedTime + distanceToFirstPhoto * 30
+        //let totalTime = self.tour!.estimatedTime + distanceToFirstPhoto * 30
         
-        self.tourInfoWindowTimeField.text = "Total time: " + String(Int(totalTime)) + " min"
+        self.tourInfoWindowTimeField.text = "Total time: " + String(Int(self.tour!.estimatedTime)) + " min"
         self.tourInfoWindowDistanceField.text = "Distance to first photo: " + String(format: "%.1f", distanceToFirstPhoto) + " mi"
         self.tourInfoWindow.isHidden = false
         
