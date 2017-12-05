@@ -325,6 +325,12 @@ class ARTourManager: NSObject {
                                                           self.currDirectionsNode.position.z)
     }
     
+    func updateDrift(drift:SCNVector3) {
+        self.currDirectionsNode.position = SCNVector3Make(drift.x,
+                                                          self.currDirectionsNode.position.y,
+                                                          drift.z)
+    }
+    
     
     
 }

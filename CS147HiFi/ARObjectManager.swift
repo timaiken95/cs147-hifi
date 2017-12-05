@@ -17,12 +17,14 @@ class ARObjectManager {
     let arScene:ARSCNView
     let locationManager:CLLocationManager
     
+    let objectNode:SCNNode = SCNNode()
     var arPhotos:[Int:ARPhoto]
     
     init(sceneView: ARSCNView, lMan:CLLocationManager) {
         
         self.arScene = sceneView
         self.locationManager = lMan
+        sceneView.scene.rootNode.addChildNode(objectNode)
         
         self.arPhotos = [:]
     }
@@ -34,7 +36,7 @@ class ARObjectManager {
     }
     
     func addARItem(newPhoto:ARPhoto) {
-        self.arScene.scene.rootNode.addChildNode(newPhoto.geometryNode)
+        self.objectNode.addChildNode(newPhoto.geometryNode)
         newPhoto.updatePosition(currLocCLL: locationManager.location!, currLocAR: getARLocation())
         self.arPhotos[newPhoto.photoID] = newPhoto
     }
@@ -67,6 +69,10 @@ class ARObjectManager {
         for photo in self.arPhotos.values {
             photo.updateY(newY: newY)
         }
+    }
+    
+    func updateDrift(driftUpdate:SCNVector3) {
+        self.objectNode.position = driftUpdate
     }
     
     var prevLoc:SCNVector3 = SCNVector3Zero

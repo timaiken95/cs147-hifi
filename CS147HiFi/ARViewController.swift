@@ -510,6 +510,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     // MARK: - Location Callback
     
     // callback for updating location from the location manager
+    
+    var adjustVector:SCNVector3 = SCNVector3Zero {
+        didSet {
+            if let tm = self.tourManager {
+                tm.updateDrift(drift: self.adjustVector)
+            }
+            
+            if let om = self.objectManager {
+                om.updateDrift(driftUpdate: self.adjustVector)
+            }
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if self.initialCLLocation == nil {
@@ -522,13 +535,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         let clDistance:Float = Float(locations.last!.distance(from: self.initialCLLocation!))
         
         let mat:SCNMatrix4 = SCNMatrix4(self.sceneView.session.currentFrame!.camera.transform)
-        let arCurrPosition:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43)
+        let arCurrPosition:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43) + self.adjustVector
         
         let arDistance:Float = SCNVector3Distance(vectorStart: iAL, vectorEnd: arCurrPosition)
         
         let distanceOff = abs(clDistance - arDistance)
-        
-        print("Distance off \(distanceOff)")
+        print(distanceOff)
+        print(self.initialARLocation!)
+        if distanceOff > 3 {
+            var latDist = self.initialCLLocation!.distance(from:
+                CLLocation(latitude: locations.last!.coordinate.latitude,
+                           longitude: self.initialCLLocation!.coordinate.longitude))
+            
+            var longDist = self.initialCLLocation!.distance(from:
+                CLLocation(latitude: self.initialCLLocation!.coordinate.latitude,
+                           longitude: locations.last!.coordinate.longitude))
+            
+            if locations.last!.coordinate.latitude > self.initialCLLocation!.coordinate.latitude {
+                latDist *= -1
+            }
+            
+            if locations.last!.coordinate.longitude < self.initialCLLocation!.coordinate.longitude {
+                longDist *= -1
+            }
+            
+            let truePosition = self.initialARLocation! + SCNVector3Make(Float(longDist), 0, Float(latDist))
+            let error = SCNVector3Make(truePosition.x - arCurrPosition.x,
+                                       0,
+                                       truePosition.z - arCurrPosition.z)
+            
+            self.adjustVector += error
+            
+            print(truePosition)
+            print(arCurrPosition + self.adjustVector)
+                
+        }
         
     }
     
