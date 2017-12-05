@@ -348,6 +348,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                         self.photoAudioDescriptionBox.text = photo.description
                         self.photoAudioDescriptionBox.scrollRangeToVisible(NSMakeRange(0, 10))
                         self.photoAudioImageBox.image = photo.imageFile
+                        
                         self.showPhotoAudioInfo = true
                         
                         let filename = audioManager!.arAudio[photo.photoID]!.audioFile
