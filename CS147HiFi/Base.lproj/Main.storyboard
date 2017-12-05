@@ -1324,32 +1324,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-7C-kDK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-rY-t0G">
-                                <rect key="frame" x="40" y="527" width="100" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
-                                        <rect key="frame" x="15" y="15" width="70" height="70"/>
-                                        <state key="normal" image="backButton"/>
-                                        <connections>
-                                            <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.54256742294520544" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="15" id="3Q7-SN-xR9"/>
-                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="KU4-rY-t0G" secondAttribute="leading" constant="15" id="9Q0-2p-qnT"/>
-                                    <constraint firstAttribute="width" constant="100" id="Eum-td-ddU"/>
-                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="top" secondItem="KU4-rY-t0G" secondAttribute="top" constant="15" id="Net-d6-0Rc"/>
-                                    <constraint firstAttribute="trailing" secondItem="KaJ-Qh-nnL" secondAttribute="trailing" constant="15" id="U19-Vq-SvR"/>
-                                    <constraint firstAttribute="height" constant="100" id="b90-zG-Yvz"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDk-r2-KYm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="adv-MT-jp2">
@@ -1698,6 +1672,32 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-rY-t0G">
+                                <rect key="frame" x="40" y="527" width="100" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
+                                        <rect key="frame" x="20" y="15" width="50" height="70"/>
+                                        <state key="normal" image="left-arrow-black-circular-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.54256742294520544" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="15" id="3Q7-SN-xR9"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="KU4-rY-t0G" secondAttribute="leading" constant="20" id="9Q0-2p-qnT"/>
+                                    <constraint firstAttribute="width" constant="100" id="Eum-td-ddU"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="top" secondItem="KU4-rY-t0G" secondAttribute="top" constant="15" id="Net-d6-0Rc"/>
+                                    <constraint firstAttribute="trailing" secondItem="KaJ-Qh-nnL" secondAttribute="trailing" constant="30" id="U19-Vq-SvR"/>
+                                    <constraint firstAttribute="height" constant="100" id="b90-zG-Yvz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1747,8 +1747,8 @@
         <image name="X_Button_White" width="75" height="75"/>
         <image name="arrow_left" width="191" height="125"/>
         <image name="arrow_right" width="191" height="125"/>
-        <image name="backButton" width="43" height="36"/>
         <image name="info" width="44" height="44"/>
+        <image name="left-arrow-black-circular-button" width="135" height="205"/>
         <image name="mapIcon" width="55" height="54"/>
         <image name="pin_item_found_symbol" width="50" height="50"/>
         <image name="pin_item_symbol" width="38" height="38"/>
