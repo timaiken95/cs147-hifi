@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,6 +19,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     @IBOutlet weak var photoDescriptionBox: UITextView!
     @IBOutlet weak var photoTitleBox: UILabel!
     @IBOutlet weak var photoImageBox: UIImageView!
+    
+    @IBOutlet weak var photoAudioInfoView: UIVisualEffectView!
+    @IBOutlet weak var photoAudioDescriptionBox: UITextView!
+    @IBOutlet weak var photoAudioTitleBox: UILabel!
+    @IBOutlet weak var photoAudioImageBox: UIImageView!
+    @IBOutlet weak var playPauseButton: UIButton!
     
     @IBOutlet weak var exploreModeTopButtonView: UIView!
     @IBOutlet weak var tourModeTopButtonView: UIView!
@@ -57,6 +64,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     var objectManager:ARObjectManager?
     var tourManager:ARTourManager?
+    var audioManager:ARAudioManager?
     var locationManager:CLLocationManager?
     
     var session:ARSession?
@@ -98,6 +106,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
     }
     
+    var showPhotoAudioInfo:Bool = false {
+        didSet {
+            if self.showPhotoAudioInfo == true {
+                self.photoAudioInfoView.isHidden = false
+                self.showMapButtonView.isHidden = true
+            } else {
+                self.photoAudioInfoView.isHidden = true
+                self.showMapButtonView.isHidden = false
+            }
+        }
+    }
+    
     var dataReady:Bool = false {
         didSet {
             self.objectManager = ARObjectManager(sceneView: self.sceneView, lMan: self.locationManager!)
@@ -107,8 +127,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                                              distLeft: self.tourDistanceLeftLabel,
                                              storiesFound: self.tourStoriesFoundLabel
             )
+            self.audioManager = ARAudioManager()
             
-            AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!)
+            AppData.importAllData(objectManager: self.objectManager!, tourManager: self.tourManager!, audioManager: self.audioManager!)
             
             self.tourTable.reloadData()
             
@@ -182,6 +203,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         self.infoScreenView.isHidden = true
         self.leftArrowView.isHidden = true
         self.rightArrowView.isHidden = true
+        self.photoAudioInfoView.isHidden = true
         
         arTap.addTarget(self, action: #selector(self.onTapGesture))
         self.view.addGestureRecognizer(arTap)
@@ -320,11 +342,30 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             let result = hitResults[0]
             if let m = objectManager {
                 if let photo = m.getPhotoForNode(node: result.node) {
-                    self.photoTitleBox.text = photo.title
-                    self.photoDescriptionBox.text = photo.description
-                    self.photoDescriptionBox.scrollRangeToVisible(NSMakeRange(0, 10))
-                    self.photoImageBox.image = photo.imageFile
-                    self.showPhotoInfo = true
+                    
+                    if self.audioManager!.arAudio.keys.contains(photo.photoID) {
+                        self.photoAudioTitleBox.text = photo.title
+                        self.photoAudioDescriptionBox.text = photo.description
+                        self.photoAudioDescriptionBox.scrollRangeToVisible(NSMakeRange(0, 10))
+                        self.photoAudioImageBox.image = photo.imageFile
+                        self.showPhotoAudioInfo = true
+                        
+                        let filename = audioManager!.arAudio[photo.photoID]!.audioFile
+                        let bundleResource = Bundle.main.path(forResource: filename, ofType: "wav")!
+                        let url = URL(fileURLWithPath: bundleResource)
+                        
+                        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                        try! AVAudioSession.sharedInstance().setActive(true)
+                        
+                        try! audioPlayer = AVAudioPlayer(contentsOf: url)
+                        
+                    } else {
+                        self.photoTitleBox.text = photo.title
+                        self.photoDescriptionBox.text = photo.description
+                        self.photoDescriptionBox.scrollRangeToVisible(NSMakeRange(0, 10))
+                        self.photoImageBox.image = photo.imageFile
+                        self.showPhotoInfo = true
+                    }
                     
                     UserDefaults.standard.set(true, forKey: "seen" + String(photo.photoID))
                     
@@ -351,6 +392,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     
     @IBAction func closePhotoInfoWindow(_ sender: Any) {
         self.showPhotoInfo = false
+    }
+    
+    @IBAction func closePhotoAudioInfoWindow(_ sender: Any) {
+        if let a = self.audioPlayer {
+            a.stop()
+            self.audioPlayer = nil
+        }
+        self.audioPlaying = false
+        self.showPhotoAudioInfo = false
+        self.playPauseButton.setImage(#imageLiteral(resourceName: "play-button"), for: UIControlState.normal)
+        self.playPauseButton.setImage(#imageLiteral(resourceName: "play-button"), for: UIControlState.selected)
     }
     
     @IBAction func startExploringClicked(_ sender: Any) {
@@ -418,6 +470,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
         self.infoScreenView.isHidden = false
     }
+    
+    var audioPlayer:AVAudioPlayer? = nil
+    var audioPlaying = false
+    @IBAction func playPauseAudioClicked(_ sender: Any) {
+         
+        if self.audioPlaying {
+            if let a = audioPlayer {
+                a.pause()
+            }
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "play-button"), for: UIControlState.normal)
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "play-button"), for: UIControlState.selected)
+            self.audioPlaying = false
+            
+        } else {
+            if let a = audioPlayer {
+                a.prepareToPlay()
+                a.play()
+            }
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: UIControlState.normal)
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: UIControlState.selected)
+            self.audioPlaying = true
+        }
+    }
+    
+    @IBAction func resetAudioClicked(_ sender: Any) {
+        if let a = audioPlayer {
+            a.pause()
+            a.currentTime = 0
+            if self.audioPlaying {
+                a.prepareToPlay()
+                a.play()
+            }
+        }
+    }
+    
     
     // MARK: - Location Callback
     
