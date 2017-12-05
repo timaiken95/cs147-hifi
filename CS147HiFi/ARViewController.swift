@@ -460,12 +460,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         if let _ = self.tourManager?.currTour {
             self.infoScreenTitle1.text = "Tour-Mode"
             self.infoScreenTitle2.text = "Tour-Mode"
-            self.infoScreenDescription1.text = "Follow the arrows to discover different stories."
+            self.infoScreenDescription1.text = "Follow the arrows to take a campus tour and discover different stories. Click on each photo you find to advance the tour."
             self.infoScreenDescription2.text = "You can cancel at any time if you don't feel like continuing the tour. Just press the cancel button."
         } else {
             self.infoScreenTitle1.text = "Explore-Mode"
             self.infoScreenTitle2.text = "Explore-Mode"
-            self.infoScreenDescription1.text = "You can move your phone and look for images floating in the air."
+            self.infoScreenDescription1.text = "You can walk around with your phone and look for images floating in the air. Some images have audio clips you can listen to once you've clicked on them."
             self.infoScreenDescription2.text = "If you don't see any images or arrows, check out the map to see where to find something!"
         }
         self.infoScreenView.isHidden = false

@@ -917,17 +917,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gs-pb-CNu">
-                                                    <rect key="frame" x="30" y="317" width="235" height="150"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gs-pb-CNu">
+                                                    <rect key="frame" x="30" y="347" width="235" height="120"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="hWf-FD-NKx"/>
+                                                        <constraint firstAttribute="height" constant="120" id="hWf-FD-NKx"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-JB-RdQ">
-                                                    <rect key="frame" x="30" y="180" width="235" height="137"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-JB-RdQ">
+                                                    <rect key="frame" x="30" y="180" width="235" height="167"/>
                                                     <fontDescription key="fontDescription" name="Comfortaa-Light" family="Comfortaa" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1324,6 +1324,32 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1hm-7C-kDK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-rY-t0G">
+                                <rect key="frame" x="40" y="527" width="100" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
+                                        <rect key="frame" x="20" y="15" width="50" height="70"/>
+                                        <state key="normal" image="left-arrow-black-circular-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.54256742294520544" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="15" id="3Q7-SN-xR9"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="KU4-rY-t0G" secondAttribute="leading" constant="20" id="9Q0-2p-qnT"/>
+                                    <constraint firstAttribute="width" constant="100" id="Eum-td-ddU"/>
+                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="top" secondItem="KU4-rY-t0G" secondAttribute="top" constant="15" id="Net-d6-0Rc"/>
+                                    <constraint firstAttribute="trailing" secondItem="KaJ-Qh-nnL" secondAttribute="trailing" constant="30" id="U19-Vq-SvR"/>
+                                    <constraint firstAttribute="height" constant="100" id="b90-zG-Yvz"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDk-r2-KYm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="adv-MT-jp2">
@@ -1672,32 +1698,6 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KU4-rY-t0G">
-                                <rect key="frame" x="40" y="527" width="100" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KaJ-Qh-nnL">
-                                        <rect key="frame" x="20" y="15" width="50" height="70"/>
-                                        <state key="normal" image="left-arrow-black-circular-button"/>
-                                        <connections>
-                                            <action selector="backButtonClicked:" destination="bro-0c-PUu" eventType="touchUpInside" id="XnE-rZ-2Ty"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.54256742294520544" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="KaJ-Qh-nnL" secondAttribute="bottom" constant="15" id="3Q7-SN-xR9"/>
-                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="leading" secondItem="KU4-rY-t0G" secondAttribute="leading" constant="20" id="9Q0-2p-qnT"/>
-                                    <constraint firstAttribute="width" constant="100" id="Eum-td-ddU"/>
-                                    <constraint firstItem="KaJ-Qh-nnL" firstAttribute="top" secondItem="KU4-rY-t0G" secondAttribute="top" constant="15" id="Net-d6-0Rc"/>
-                                    <constraint firstAttribute="trailing" secondItem="KaJ-Qh-nnL" secondAttribute="trailing" constant="30" id="U19-Vq-SvR"/>
-                                    <constraint firstAttribute="height" constant="100" id="b90-zG-Yvz"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
