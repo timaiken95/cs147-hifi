@@ -1741,16 +1741,16 @@
     <resources>
         <image name="X_Button_Gray" width="72" height="72"/>
         <image name="X_Button_White" width="75" height="75"/>
-        <image name="arrow_left" width="191" height="125"/>
-        <image name="arrow_right" width="191" height="125"/>
+        <image name="arrow_left" width="230" height="150"/>
+        <image name="arrow_right" width="230" height="150"/>
         <image name="info" width="44" height="44"/>
         <image name="left-arrow-black-circular-button" width="135" height="205"/>
         <image name="mapIcon" width="55" height="54"/>
         <image name="pin_item_found_symbol" width="50" height="50"/>
-        <image name="pin_item_symbol" width="38" height="38"/>
-        <image name="pin_tour_symbol" width="38" height="38"/>
+        <image name="pin_item_symbol" width="190" height="190"/>
+        <image name="pin_tour_symbol" width="190" height="190"/>
         <image name="play-button" width="300" height="300"/>
         <image name="rotating-arrow-to-the-left" width="135" height="130"/>
-        <image name="speaker" width="135" height="130"/>
+        <image name="speaker" width="256" height="256"/>
     </resources>
 </document>

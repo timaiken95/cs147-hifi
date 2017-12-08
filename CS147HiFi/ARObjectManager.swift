@@ -78,12 +78,14 @@ class ARObjectManager {
     var prevLoc:SCNVector3 = SCNVector3Zero
     func updateVisible(loc:SCNVector3) {
         
-        if SCNVector3Distance(vectorStart: loc, vectorEnd: prevLoc) > 5 {
+        if SCNVector3Distance(vectorStart: loc, vectorEnd: prevLoc) > 5 || prevLoc.distance(vector: SCNVector3Zero) == 0 {
             self.prevLoc = loc
             
             for photo in self.arPhotos.values {
                 if SCNVector3Distance(vectorStart: photo.geometryNode.position, vectorEnd: loc) < 100 {
                     setPhotoVisible(pID: photo.photoID)
+                } else {
+                    setPhotoInvisible(pID: photo.photoID)
                 }
             }
         }

@@ -278,7 +278,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             }
         }
         
-        if time - self.previousTime < 5 {
+        if abs(time - self.previousTime) < 5 {
             return
         }
         self.previousTime = time
@@ -293,7 +293,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
             self.currCameraY = newY
         }
         
-        guard let tm = self.tourManager, let _ = tm.currTour else { return }
+        guard let tm = self.tourManager else { return }
         
         let currLocation:SCNVector3 = SCNVector3(mat.m41, mat.m42, mat.m43)
         if tm.currTour == nil {
@@ -541,7 +541,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         let distanceOff = abs(clDistance - arDistance)
         print(distanceOff)
-        print(self.initialARLocation!)
+        /*
         if distanceOff > 3 {
             var latDist = self.initialCLLocation!.distance(from:
                 CLLocation(latitude: locations.last!.coordinate.latitude,
@@ -565,11 +565,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                                        truePosition.z - arCurrPosition.z)
             
             self.adjustVector += error
-            
-            print(truePosition)
-            print(arCurrPosition + self.adjustVector)
                 
-        }
+        }*/
         
     }
     
